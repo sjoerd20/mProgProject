@@ -1,12 +1,12 @@
 # mProgProject
 
-Problem Statement
+## Problem Statement
 	What is the problem?
 	
-Solution
+## Solution
 	What is the solution?
 	
-Prerequisites
+## Prerequisites
 	-data sources
 	-external components
 	-review of similar apps
