@@ -8,7 +8,7 @@
 	What is the solution?
 	-Password manager?
 	-Classroom finder?
-	-A automatic planning app?
+	-An automatic planning app?
 	
 ## Prerequisites
 	-data sources
