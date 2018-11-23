@@ -16,7 +16,7 @@
 ## Prerequisites
 ### data sources
 ### external components
-	[GitHub Pages](https://pages.github.com/)
-	[Android mediaplayer](https://developer.android.com/guide/topics/media/mediaplayer#java)
+	- Link to Android mediaplayer [Android mediaplayer](https://developer.android.com/guide/topics/media/mediaplayer#java).
+	<a href="http://www.quora.com/Adam-DAngelo">Quora profile link for Adam D'Angelo</a>
 ### review of similar apps
 ### identify hardest parts to implement
