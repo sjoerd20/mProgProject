@@ -6,9 +6,10 @@
 	
 ## Solution
 	What is the solution?
-	-Password manager?
-	-Classroom finder?
-	-An automatic planning app?
+	1. Shared playlist for parties
+	1. Password manager?
+	1. Classroom finder?
+	1. An automatic planning app?
 	
 ## Prerequisites
 	-data sources
