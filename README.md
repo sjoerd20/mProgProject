@@ -2,14 +2,14 @@
 
 ## Problem Statement
 	What is the problem?
-	-
+	1. The music at parties is usually done by one person on a single device, because it is impossible to connect multiple 		   device to a single speaker
 	
 ## Solution
 	What is the solution?
-	1. Shared playlist for parties
-	1. Password manager?
-	1. Classroom finder?
-	1. An automatic planning app?
+	1. Shared playlist for parties. People can like the music they want to listen to. How more likes a number has, how higer 	    ranked it get. The highest ranking numbers will then be played first.
+	2. Password manager?
+	3. Classroom finder?
+	4. An automatic planning app?
 	
 ## Prerequisites
 	-data sources
