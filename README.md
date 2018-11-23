@@ -14,7 +14,8 @@
 	4. Classroom finder?
 	
 ## Prerequisites
-	-data sources
-	-external components
-	-review of similar apps
-	-identify hardest parts to implement
+### data sources
+### external components
+	![](https://developer.android.com/guide/topics/media/mediaplayer#java)
+### review of similar apps
+### identify hardest parts to implement
