@@ -16,6 +16,7 @@
 ## Prerequisites
 ### data sources
 ### external components
+	[GitHub Pages](https://pages.github.com/)
 	[Android mediaplayer](https://developer.android.com/guide/topics/media/mediaplayer#java)
 ### review of similar apps
 ### identify hardest parts to implement
