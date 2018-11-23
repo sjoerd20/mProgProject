@@ -15,7 +15,10 @@
 	
 ## Prerequisites
 ### data sources
+	1. Music from device
+	2. If possible, music from music app or online
 ### external components
 	- [Android mediaplayer](https://developer.android.com/guide/topics/media/mediaplayer#java)
 ### review of similar apps
 ### identify hardest parts to implement
+	Hardest part to implement is linking devices and gather the neede music
