@@ -1,12 +1,11 @@
 # mProgProject
 
 ## Problem Statement
-	What is the problem?
-	1. The music at parties is usually done by one person on a single device, because it is impossible to connect multiple 		   device to a single speaker
+The music at parties is usually done by one person on a single device, because it is impossible to connect multiple 		   device to a single speaker. This means thate a single person has to choose all songs or pass his/her telephone round the group. 
+This is something that happens a lot at parties of people from a young age (around 16) to people in their late twenties/early thirties.
 	
 ## Solution
-	What is the solution?
-	1. Shared playlist for parties. People can like the music they want to listen to. How more likes a number has, how higer 	    ranked it get. The highest ranking numbers will then be played first.
+The solution is to make an app that contains a playlist shared with multiple people whereby one device is the master device that plays the music from the playlist via a music API.
 	
 ## Prerequisites
 ### data sources
