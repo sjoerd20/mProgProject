@@ -38,13 +38,12 @@ The solution is to make an app that contains a playlist shared with multiple peo
 	
 ## Prerequisites
 ### data sources
-Youtube app
+The music used for this app originates from the Youtube app. The user has to have a updated version of the Youtube app on their phone. To establish the connection between the Youtube player and this app, the [Youtube API](https://www.youtube.com/yt/dev/api-resources/) is used.
 	
 ### external components
-[Youtube API](https://www.youtube.com/yt/dev/api-resources/)
-[firebase](https://firebase.google.com/)
+For the communication between the different connected devices, [firebase](https://firebase.google.com/) is used. This is the place where the playlist, the users and the up- and downvotes are stored.
 	
 ### review of similar apps
 
 ### identify hardest parts to implement
-Hardest part to implement is to get the youtube API working properly for each device. Linking all users via Firebase shouldn't be too hard to implement.
+The hardest part to implement is to get the youtube API working properly for each device. A correct setup has to be made to make it possible to alter all needed features, for instance updating a playlist with the API. There are many tutorials online for setting up an Youtube API, thus if a problem arises, many possible solutions can possible be found.
