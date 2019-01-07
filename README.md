@@ -6,16 +6,21 @@ This is something that happens a lot at parties of people from a young age (arou
 	
 ## Solution
 The solution is to make an app that contains a playlist shared with multiple people whereby one device is the master device that plays the music from the playlist via a music API.
+
+[Login screen](/doc/Login_screen.jpg)
+[Numbers_screen](/doc/Group_leader_screen.jpg)
+[Search screen](/doc/Search_screen.jpg)
+[Settings screen](/doc/Settings_screen.jpg)
 	
 ## Prerequisites
 ### data sources
-	1. Music from device
-	2. If possible, music from music app or online
+Youtube app
 	
 ### external components
-	- [Android mediaplayer](https://developer.android.com/guide/topics/media/mediaplayer#java)
+[Youtube API](https://www.youtube.com/yt/dev/api-resources/)
+[firebase](https://firebase.google.com/)
 	
 ### review of similar apps
 
 ### identify hardest parts to implement
-	Hardest part to implement is to gather music from a real music app, instead of using music from the local storage of a single device
+Hardest part to implement is to get the youtube API working properly for each device. Linking all users via Firebase shouldn't be too hard to implement.
