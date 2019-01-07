@@ -8,19 +8,21 @@ This is something that happens a lot at parties of people from a young age (arou
 The solution is to make an app that contains a playlist shared with multiple people whereby one device is the master device that plays the music from the playlist via a music API.
 
 ### Main features
+(features that are part of the minimum viable product (MVP) are marked __bold__)
 - Login screen
-	- Create a new group and login code
-	- Join a existing group through a login code
+	- __Create a new group and login code__
+	- __Join a existing group through a login code__
 - Home screen
-	- Play and pause the current song
-	- View the next songs in the queue
+	- __Play and pause the current song__
+	- __View the next songs in the queue__
 	- Down- and upvote songs
 - Search screen
-	- Search for new numbers and add them to the queue
+	- __Search for new numbers and add them to the queue__
 - Settings screen
-	- View group login code
-	- Terminate current group (only available for group creator)
+	- __View group login code__
+	- __Terminate current group (only available for group creator)__
 	- Change minimum number of downvotes before a song is removed from the queue
+	- __View all current users and be able to kick them (only available for group creator)__
 
 ### Login screen
 ![Login screen](/doc/Login_screen.jpg)
