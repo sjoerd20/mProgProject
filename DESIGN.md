@@ -1,8 +1,12 @@
 # Design Document
 
 ## Design sketch
-![design](/doc/DesignSketch.jpg
-)
+![design](/doc/DesignSketch.jpg)
+
+### API's & databases
+- [Youtube API](https://www.youtube.com/yt/dev/api-resources/)
+- [firebase](https://firebase.google.com/) 
+
 
 ### Main features
 (features that are part of the minimum viable product (MVP) are marked __bold__)
@@ -22,4 +26,4 @@
 	- __View all current users and be able to kick them (only available for group creator)__
 
 
-[Youtube API](https://www.youtube.com/yt/dev/api-resources/) [firebase](https://firebase.google.com/) 
+
