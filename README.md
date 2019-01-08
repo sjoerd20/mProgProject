@@ -22,7 +22,7 @@ The solution is to make an app that contains a playlist shared with multiple peo
 	- __View group login code__
 	- __Terminate current group (only available for group creator)__
 	- Change minimum number of downvotes needed before a song is removed from the queue
-	- __View all current users and be able to kick them (only available for group creator)__
+	- View all current users and be able to kick them (only available for group creator)
 
 ### Login screen
 ![Login screen](/doc/Login_screen.jpg)
