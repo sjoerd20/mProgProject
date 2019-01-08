@@ -9,7 +9,7 @@
 - [Youtube API](https://www.youtube.com/yt/dev/api-resources/)
 
 ### Database
-[firebase](https://firebase.google.com/) 
+For real-time storage this app uses [firebase](https://firebase.google.com/). This is an online real-time database of Google. It stores the values as JSON. The following fields will be saved to this database
 - user ID (int)
 - Playlist (string)
 - login code (int)
