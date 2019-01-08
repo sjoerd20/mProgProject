@@ -1,12 +1,18 @@
 # Design Document
 
-## Design sketch
+### Design sketch
 ![design](/doc/DesignSketch.jpg)
 
-### API's & databases
-- [Youtube API](https://www.youtube.com/yt/dev/api-resources/)
-- [firebase](https://firebase.google.com/) 
+### Classes & functions
 
+### API
+- [Youtube API](https://www.youtube.com/yt/dev/api-resources/)
+
+### Database
+[firebase](https://firebase.google.com/) 
+- user ID (int)
+- Playlist (string)
+- login code (int)
 
 ### Main features
 (features that are part of the minimum viable product (MVP) are marked __bold__)
