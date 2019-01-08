@@ -1,7 +1,8 @@
 # Design Document
 
 ## Design sketch
-![design](/doc/DesignSketch.jpg)
+![design](/doc/DesignSketch.jpg
+)
 
 ### Main features
 (features that are part of the minimum viable product (MVP) are marked __bold__)
