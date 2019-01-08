@@ -1,5 +1,8 @@
 # Design Document
 
+## Design sketch
+![Design sketch](/doc/DesignSketch.jpg)
+
 ### Main features
 (features that are part of the minimum viable product (MVP) are marked __bold__)
 - Login screen
@@ -16,7 +19,6 @@
 	- __Terminate current group (only available for group creator)__
 	- Change minimum number of downvotes needed before a song is removed from the queue
 	- __View all current users and be able to kick them (only available for group creator)__
-
 
 
 [Youtube API](https://www.youtube.com/yt/dev/api-resources/) [firebase](https://firebase.google.com/) 
