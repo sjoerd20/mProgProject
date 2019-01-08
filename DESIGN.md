@@ -9,7 +9,7 @@
 - [Youtube API](https://www.youtube.com/yt/dev/api-resources/)
 
 ### Database
-For real-time storage this app uses [firebase](https://firebase.google.com/). This is an online real-time database of Google. It stores the values as JSON. The following fields will be saved to this database
+For real-time storage this app uses [firebase](https://firebase.google.com/). This is an online real-time database of Google. It stores the values as JSON. The following fields will be saved to this database:
 - user ID (int)
 - Playlist (string)
 - login code (int)
@@ -29,7 +29,7 @@ For real-time storage this app uses [firebase](https://firebase.google.com/). Th
 	- __View group login code__
 	- __Terminate current group (only available for group creator)__
 	- Change minimum number of downvotes needed before a song is removed from the queue
-	- __View all current users and be able to kick them (only available for group creator)__
+	- View all current users and be able to kick them (only available for group creator)
 
 
 
