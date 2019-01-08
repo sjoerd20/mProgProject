@@ -4,6 +4,7 @@
 ![design](/doc/DesignSketch.jpg)
 
 ### Classes & functions
+![classes](/doc/Design Document classes.pdf)
 
 ### API
 - [Youtube API](https://www.youtube.com/yt/dev/api-resources/)
