@@ -1,7 +1,19 @@
 # Design Document
 
-## Design sketch
+### Design sketch
+![design](/doc/DesignSketch.jpg)
 
+### Classes & functions
+![classes](/doc/Design%20Document%20classes.pdf)
+
+### API
+- [Youtube API](https://www.youtube.com/yt/dev/api-resources/)
+
+### Database
+For real-time storage this app uses [firebase](https://firebase.google.com/). This is an online real-time database of Google. It stores the values as JSON. The following fields will be saved to this database:
+- user ID (int)
+- Playlist (string)
+- login code (int)
 
 ### Main features
 (features that are part of the minimum viable product (MVP) are marked __bold__)
@@ -18,7 +30,7 @@
 	- __View group login code__
 	- __Terminate current group (only available for group creator)__
 	- Change minimum number of downvotes needed before a song is removed from the queue
-	- __View all current users and be able to kick them (only available for group creator)__
+	- View all current users and be able to kick them (only available for group creator)
 
 
-[Youtube API](https://www.youtube.com/yt/dev/api-resources/) [firebase](https://firebase.google.com/) 
+
