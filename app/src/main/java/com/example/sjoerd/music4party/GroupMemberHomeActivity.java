@@ -3,13 +3,11 @@ package com.example.sjoerd.music4party;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class LoginActivity extends AppCompatActivity {
+public class GroupMemberHomeActivity extends AppCompatActivity {
 
-    private int loginCode;
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_group_member_home);
     }
 }
