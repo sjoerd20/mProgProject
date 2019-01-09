@@ -32,7 +32,6 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this,
                                         GroupMemberHomeActivity.class);
             startActivity(intent);
-
         }
     }
 
