@@ -10,7 +10,7 @@ Worked on Design Document.
 Working on prototype
 
 ### Decisions
-- I've chosen to use a Toolbar for navigation through different activities. The toolbar will be implemented with BaseActivity, so every activity can use the same toolbar. The following actions will be possible with the toolbar:
+- I've chosen to use a Toolbar for navigation through different activities. The toolbar will be implemented with BaseActivity, so every activity can use the same toolbar. The following actions will be implemented in the toolbar:
   - Back navigation
   - Settings
   - Search  
