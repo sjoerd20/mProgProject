@@ -14,3 +14,7 @@ Working on prototype
   - Back navigation
   - Settings
   - Search  
+  
+# day 4
+Working on prototype
+- Implemented the Toolbar in each Activity separate instead of using a BaseActivity
