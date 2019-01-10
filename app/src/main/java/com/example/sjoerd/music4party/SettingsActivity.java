@@ -33,6 +33,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
     }
+
     // inflate options in toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

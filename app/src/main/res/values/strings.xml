@@ -2,4 +2,7 @@
     <string name="app_name">Music4Party</string>
     <string name="action_settings">Settings</string>
     <string name="action_search">Search</string>
+    <string name="login_code">Login code</string>
+    <string name="delete_session">Delete current session</string>
+    <string name="minimum_downvotes">minimum # downvotes</string>
 </resources>
