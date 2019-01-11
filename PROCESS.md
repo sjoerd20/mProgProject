@@ -17,4 +17,12 @@ Working on prototype
   
 # day 4
 Working on prototype
+
+### Decisions
 - Implemented the Toolbar in each Activity separate instead of using a BaseActivity
+
+# day 5
+Working of connecting Firebase to application
+
+### Decisions
+- Decided to make a singleton of the FireBase class. This make it easier to use the class through multiple activities, while ensuring there is always maximal one instance of the FireBase class
