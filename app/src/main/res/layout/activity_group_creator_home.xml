@@ -15,21 +15,25 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <TextView
-        android:id="@+id/creatorCurrentVideo"
-        android:layout_width="312dp"
-        android:layout_height="88dp"
+    <!--  Youtube Player Fragment  -->
+    <fragment
+        android:id="@+id/youtube_player_fragment"
+        android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
+        android:layout_width="305dp"
+        android:layout_height="127dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:gravity="center_horizontal"
-        android:text="Current video"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/_dynamic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/loginToolbar"
+        app:layout_constraintVertical_bias="0.25" />
 
     <ListView
+        android:id="@+id/_dynamic"
         android:layout_width="310dp"
         android:layout_height="344dp"
         android:layout_marginStart="8dp"
