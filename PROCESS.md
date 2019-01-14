@@ -26,3 +26,8 @@ Working of connecting Firebase to application
 
 ### Decisions
 - Decided to make a singleton of the FireBase class. This make it easier to use the class through multiple activities, while ensuring there is always maximal one instance of the FireBase class
+
+# day 6
+Working on implementing the youtube player. Moved the youtubePLayerFragment to a separate class named YoutubePlayerFragment
+
+### Decisions
