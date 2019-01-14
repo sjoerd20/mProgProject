@@ -16,10 +16,8 @@ import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
 public class GroupCreatorHomeActivity extends AppCompatActivity {
 
-    private static final String API_KEY = "AIzaSyB91qfzy3kS3ZjtK4YoJ7Wa78afJyY7OHQ ";
-    private static final String VIDEO_CODE = "FoCG-WNsZio";
     private static final String TAG = GroupCreatorHomeActivity.class.getSimpleName();
-    private YouTubePlayerSupportFragment youTubePlayerSupportFragment;
+    private YoutubePlayerFragment youTubePlayerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +40,8 @@ public class GroupCreatorHomeActivity extends AppCompatActivity {
             }
         });
 
-        initializeYoutubePlayer();
+        // Initiate youtubePlayerFragment
+        youTubePlayerFragment = new YoutubePlayerFragment(this, getSupportFragmentManager());
     }
 
     // inflate options in toolbar
@@ -72,29 +71,5 @@ public class GroupCreatorHomeActivity extends AppCompatActivity {
         }
     }
 
-    // Initialize youtubeplayer
-    private void initializeYoutubePlayer() {
-        youTubePlayerSupportFragment = (YouTubePlayerSupportFragment) getSupportFragmentManager().
-                findFragmentById(R.id.youtube_player_fragment);
-        if (youTubePlayerSupportFragment == null) {
-            return;
-        }
-        youTubePlayerSupportFragment.initialize(API_KEY, new YouTubePlayer.OnInitializedListener() {
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean wasRestored) {
-                if (!wasRestored) {
-                    // Set player to default style
-                    youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
-                    // Cue video
-                    youTubePlayer.cueVideo(VIDEO_CODE);
-                }
-            }
 
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-                Log.e(TAG, "Youtube Player View initialization failed");
-            }
-        });
-
-    }
 }
