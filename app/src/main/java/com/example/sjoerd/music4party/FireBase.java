@@ -14,23 +14,31 @@ public class FireBase {
     private Group group;
 
     // Constructor
-    private FireBase() {
+    private FireBase(boolean isCreator) {
 
         // Create database
         this.database = FirebaseDatabase.getInstance();
 
-        // Create new group
-        DatabaseReference groupRef = database.getReference("groups");
-        groupID = groupRef.push().getKey();
+        if (isCreator) {
+            // Create new group
+            DatabaseReference groupRef = database.getReference("groups");
+            groupID = groupRef.push().getKey();
 
-        group = new Group(groupID,1234);
-        groupRef.child(groupID).setValue(group);
+            group = new Group(groupID, 1234);
+            groupRef.child(groupID).setValue(group);
+        }
+
+        // Of not creator check login code and return group
+        else {
+            // TODO check loginCode and create group
+            group = new Group("user_group", 1234);
+        }
     }
 
     // Create singleton
-    public static FireBase getInstance() {
+    public static FireBase getInstance(boolean isCreator) {
         if (instance == null) {
-            instance = new FireBase();
+            instance = new FireBase(isCreator);
         }
         return instance;
     }

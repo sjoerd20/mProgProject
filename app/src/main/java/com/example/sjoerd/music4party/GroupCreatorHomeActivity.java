@@ -30,18 +30,6 @@ public class GroupCreatorHomeActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.loginToolbar);
         setSupportActionBar(toolbar);
 
-        // Add back arrow to toolbar
-        if (getSupportActionBar() != null){
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
         // Receive intent
         Intent intent = getIntent();
         if (retrievedGroup == null) {

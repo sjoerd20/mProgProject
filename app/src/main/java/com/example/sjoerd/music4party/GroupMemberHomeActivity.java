@@ -8,8 +8,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 public class GroupMemberHomeActivity extends AppCompatActivity {
+
+    private Group retrievedGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,17 +23,12 @@ public class GroupMemberHomeActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.loginToolbar);
         setSupportActionBar(toolbar);
 
-        // Add back arrow to toolbar
-        if (getSupportActionBar() != null){
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        // Receive intent
+        Intent intent = getIntent();
+        if (retrievedGroup == null) {
+            retrievedGroup = (Group) intent.getSerializableExtra("group");
+            Toast.makeText(this, retrievedGroup.getGroupID(), Toast.LENGTH_LONG).show();
         }
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 
     // inflate options in toolbar

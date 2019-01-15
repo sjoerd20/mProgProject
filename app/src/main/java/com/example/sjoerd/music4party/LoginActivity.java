@@ -10,6 +10,7 @@ import android.widget.Button;
 public class LoginActivity extends AppCompatActivity {
 
     private int loginCode;
+    private Group group;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +33,16 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             // TODO check login code with firebase database and save user to database
+            // Retrieve group from database
+            FireBase fireBase = FireBase.getInstance(false);
+            Group group = fireBase.getGroup();
 
             // Start the GroupMemberHomeActivity
             Intent intent = new Intent(LoginActivity.this,
                                         GroupMemberHomeActivity.class);
+            intent.putExtra("group", group);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -44,8 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     private class LoginCreateButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            // TODO create firebase database and add user to it
-            FireBase fireBase = FireBase.getInstance();
+            FireBase fireBase = FireBase.getInstance(true);
             Group group = fireBase.getGroup();
 
             // Start the GroupCreatorHomeActivity
