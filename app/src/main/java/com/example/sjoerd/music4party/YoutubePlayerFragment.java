@@ -68,7 +68,6 @@ class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListener {
     public class PlayerStateChangeListener implements YouTubePlayer.PlayerStateChangeListener {
         @Override
         public void onLoading() {
-
         }
 
         @Override
@@ -78,12 +77,10 @@ class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListener {
 
         @Override
         public void onAdStarted() {
-
         }
 
         @Override
         public void onVideoStarted() {
-
         }
 
         @Override
@@ -113,12 +110,10 @@ class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListener {
 
         @Override
         public void onBuffering(boolean b) {
-
         }
 
         @Override
         public void onSeekTo(int i) {
-
         }
     }
 }

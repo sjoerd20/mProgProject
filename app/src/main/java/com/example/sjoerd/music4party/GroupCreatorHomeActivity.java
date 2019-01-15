@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -18,6 +19,7 @@ public class GroupCreatorHomeActivity extends AppCompatActivity {
 
     private static final String TAG = GroupCreatorHomeActivity.class.getSimpleName();
     private YoutubePlayerFragment youTubePlayerFragment;
+    private Group retrievedGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,13 @@ public class GroupCreatorHomeActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        // Receive intent
+        Intent intent = getIntent();
+        if (retrievedGroup == null) {
+            retrievedGroup = (Group) intent.getSerializableExtra("group");
+            Toast.makeText(this, retrievedGroup.getGroupID(), Toast.LENGTH_LONG).show();
+        }
 
         // Initiate youtubePlayerFragment
         youTubePlayerFragment = new YoutubePlayerFragment(this, getSupportFragmentManager());

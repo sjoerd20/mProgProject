@@ -45,11 +45,15 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             // TODO create firebase database and add user to it
+            FireBase fireBase = FireBase.getInstance();
+            Group group = fireBase.getGroup();
 
             // Start the GroupCreatorHomeActivity
             Intent intent = new Intent(LoginActivity.this,
                                         GroupCreatorHomeActivity.class);
+            intent.putExtra("group", group);
             startActivity(intent);
+            finish();
         }
     }
 }
