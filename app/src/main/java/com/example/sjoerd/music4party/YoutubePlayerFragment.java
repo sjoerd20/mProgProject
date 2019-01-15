@@ -17,7 +17,7 @@ class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListener {
     private static final String API_KEY = "AIzaSyB91qfzy3kS3ZjtK4YoJ7Wa78afJyY7OHQ ";
 //    private ArrayList<String> video_codes = new ArrayList<String>();
     private static final String VIDEO_CODE = "FoCG-WNsZio";
-    private static final String VIDEO_CODE2 = "FoCG-WNsZio";
+    private static final String VIDEO_CODE2 = "8ebRM6vSYXw";
 
     private YouTubePlayerSupportFragment youTubePlayerSupportFragment;
     private Activity activity;
@@ -48,15 +48,15 @@ class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListener {
 
             // Set player to default style
             // CHROMELESS, DEFAULT, MINIMAL
-            youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL);
+            youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
             youTubePlayer.setShowFullscreenButton(false);
 
             // Cue video
             youTubePlayer.loadVideo(VIDEO_CODE);
-            youTubePlayer.play();
 
-//            // add listener
-//            youTubePlayer.setPlaybackEventListener(new VideoPlaybackListener());
+            // add listeners
+            youTubePlayer.setPlaybackEventListener(new VideoPlaybackListener());
+            youTubePlayer.setPlayerStateChangeListener(new PlayerStateChangeListener());
         }
     }
 
@@ -65,31 +65,60 @@ class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListener {
         Log.e(TAG, "Youtube Player View initialization failed");
     }
 
-//    public class VideoPlaybackListener implements YouTubePlayer.PlaybackEventListener {
-//        @Override
-//        public void onPlaying() {
-//        }
-//
-//        @Override
-//        public void onPaused() {
-//        }
-//
-//        @Override
-//        public void onStopped() {
-//            // TODO jump to next video
-//            // Cue next video
-//            youTubePlayer.loadVideo(VIDEO_CODE2);
-//            youTubePlayer.play();
-//        }
-//
-//        @Override
-//        public void onBuffering(boolean b) {
-//
-//        }
-//
-//        @Override
-//        public void onSeekTo(int i) {
-//
-//        }
-//    }
+    public class PlayerStateChangeListener implements YouTubePlayer.PlayerStateChangeListener {
+        @Override
+        public void onLoading() {
+
+        }
+
+        @Override
+        public void onLoaded(String s) {
+            youTubePlayer.play();
+        }
+
+        @Override
+        public void onAdStarted() {
+
+        }
+
+        @Override
+        public void onVideoStarted() {
+
+        }
+
+        @Override
+        public void onVideoEnded() {
+            // Cue next video
+            youTubePlayer.loadVideo(VIDEO_CODE2);
+        }
+
+        @Override
+        public void onError(YouTubePlayer.ErrorReason errorReason) {
+
+        }
+    }
+
+    public class VideoPlaybackListener implements YouTubePlayer.PlaybackEventListener {
+        @Override
+        public void onPlaying() {
+        }
+
+        @Override
+        public void onPaused() {
+        }
+
+        @Override
+        public void onStopped() {
+        }
+
+        @Override
+        public void onBuffering(boolean b) {
+
+        }
+
+        @Override
+        public void onSeekTo(int i) {
+
+        }
+    }
 }
