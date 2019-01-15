@@ -31,3 +31,9 @@ Working of connecting Firebase to application
 Working on implementing the youtube player. Moved the youtubePLayerFragment to a separate class named YoutubePlayerFragment
 
 ### Decisions
+
+# day 7
+Worked on YoutubePlayer and going to next video's. Also worked on pushing data to FireBase
+
+### Decisions
+- Added a Group class to hold all necessary info about the group a user is in: loginCode, groupID (FireBase group id)
