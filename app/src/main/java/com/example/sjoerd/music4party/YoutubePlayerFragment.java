@@ -91,7 +91,6 @@ class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListener {
 
         @Override
         public void onError(YouTubePlayer.ErrorReason errorReason) {
-
         }
     }
 
