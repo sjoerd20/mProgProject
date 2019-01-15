@@ -32,5 +32,10 @@ The order in which items have to be placed in a class from up to down
 ### Maximal character on a line
 The maximum anmount of characters on a single line is capped to 100 characters.
 
+### File grouping
+Each class should be placed in its own file. Every subcategories of files should be placed in a package.
+
 ## Links
 [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
+[w3 Java Programming Style Guide](https://w3.cs.jmu.edu/bernstdh/web/common/policies/styleguide-java.php)
+[Twitter Java Style Guide](https://github.com/twitter/commons/blob/master/src/java/com/twitter/common/styleguide.md#variable-naming)
