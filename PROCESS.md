@@ -37,3 +37,10 @@ Worked on YoutubePlayer and going to next video's. Also worked on pushing data t
 
 ### Decisions
 - Added a Group class to hold all necessary info about the group a user is in: loginCode, groupID (FireBase group id)
+
+# day 8
+Created packages in the java folder to keep the directory neat. 
+
+### Decisions
+
+# day 9
