@@ -1,9 +1,10 @@
-package com.example.sjoerd.music4party;
+package com.example.sjoerd.music4party.fragments;
 
 import android.app.Activity;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 
+import com.example.sjoerd.music4party.R;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
 
-class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListener {
+public class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListener {
 
     private static final String API_KEY = "AIzaSyB91qfzy3kS3ZjtK4YoJ7Wa78afJyY7OHQ ";
 //    private ArrayList<String> video_codes = new ArrayList<String>();
@@ -22,7 +23,7 @@ class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListener {
     private YouTubePlayerSupportFragment youTubePlayerSupportFragment;
     private Activity activity;
     private FragmentManager supportFragmentManager;
-    protected YouTubePlayer youTubePlayer;
+    private YouTubePlayer youTubePlayer;
 
     // Constructor
     public YoutubePlayerFragment(Activity activity, FragmentManager supportFragmentManager) {
@@ -42,7 +43,9 @@ class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListener {
     }
 
     @Override
-    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean wasRestored) {
+    public void onInitializationSuccess(YouTubePlayer.Provider provider,
+                                        YouTubePlayer youTubePlayer,
+                                        boolean wasRestored) {
         if (!wasRestored) {
             this.youTubePlayer = youTubePlayer;
 
@@ -61,7 +64,8 @@ class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListener {
     }
 
     @Override
-    public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+    public void onInitializationFailure(YouTubePlayer.Provider provider,
+                                        YouTubeInitializationResult youTubeInitializationResult) {
         Log.e(TAG, "Youtube Player View initialization failed");
     }
 

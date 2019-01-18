@@ -1,4 +1,4 @@
-package com.example.sjoerd.music4party;
+package com.example.sjoerd.music4party.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.example.sjoerd.music4party.R;
 
 public class SearchActivity extends AppCompatActivity {
 

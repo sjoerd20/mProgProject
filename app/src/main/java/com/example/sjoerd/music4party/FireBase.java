@@ -1,7 +1,6 @@
 package com.example.sjoerd.music4party;
 
-import android.content.Context;
-
+import com.example.sjoerd.music4party.models.Group;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -14,7 +13,7 @@ public class FireBase {
     private Group group;
 
     // Constructor
-    private FireBase(boolean isCreator) {
+    private FireBase(boolean isCreator, String key) {
 
         // Create database
         this.database = FirebaseDatabase.getInstance();
@@ -31,14 +30,17 @@ public class FireBase {
         // Of not creator check login code and return group
         else {
             // TODO check loginCode and create group
-            group = new Group("user_group", 1234);
+            DatabaseReference groupRef = database.getReference("groups");
+
+            group = new Group(key, 1234);
+            groupRef.child(key).setValue(group);
         }
     }
 
     // Create singleton
-    public static FireBase getInstance(boolean isCreator) {
+    public static FireBase getInstance(boolean isCreator, String key) {
         if (instance == null) {
-            instance = new FireBase(isCreator);
+            instance = new FireBase(isCreator, key);
         }
         return instance;
     }

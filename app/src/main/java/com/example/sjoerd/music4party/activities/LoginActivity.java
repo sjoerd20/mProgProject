@@ -1,4 +1,4 @@
-package com.example.sjoerd.music4party;
+package com.example.sjoerd.music4party.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
+import com.example.sjoerd.music4party.FireBase;
+import com.example.sjoerd.music4party.models.Group;
+import com.example.sjoerd.music4party.R;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -34,7 +39,11 @@ public class LoginActivity extends AppCompatActivity {
         public void onClick(View v) {
             // TODO check login code with firebase database and save user to database
             // Retrieve group from database
-            FireBase fireBase = FireBase.getInstance(false);
+
+            EditText loginCodeEditText = findViewById(R.id.loginCodeText);
+            String loginCodeText = loginCodeEditText.getText().toString();
+
+            FireBase fireBase = FireBase.getInstance(false, loginCodeText);
             Group group = fireBase.getGroup();
 
             // Start the GroupMemberHomeActivity
@@ -50,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
     private class LoginCreateButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            FireBase fireBase = FireBase.getInstance(true);
+            FireBase fireBase = FireBase.getInstance(true, null);
             Group group = fireBase.getGroup();
 
             // Start the GroupCreatorHomeActivity

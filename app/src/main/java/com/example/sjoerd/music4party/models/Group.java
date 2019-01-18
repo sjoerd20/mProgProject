@@ -1,4 +1,4 @@
-package com.example.sjoerd.music4party;
+package com.example.sjoerd.music4party.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;

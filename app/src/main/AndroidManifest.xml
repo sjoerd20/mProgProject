@@ -13,17 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GroupCreatorHomeActivity" />
-        <activity android:name=".GroupMemberHomeActivity" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".activities.GroupCreatorHomeActivity" />
+        <activity android:name=".activities.GroupMemberHomeActivity" />
+        <activity android:name=".activities.SearchActivity" />
+        <activity android:name=".activities.SettingsActivity"></activity>
     </application>
 
 </manifest>

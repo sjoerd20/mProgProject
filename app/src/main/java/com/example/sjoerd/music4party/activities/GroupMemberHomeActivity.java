@@ -1,4 +1,4 @@
-package com.example.sjoerd.music4party;
+package com.example.sjoerd.music4party.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,8 +7,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
+
+import com.example.sjoerd.music4party.models.Group;
+import com.example.sjoerd.music4party.R;
 
 public class GroupMemberHomeActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.sjoerd.music4party;
+package com.example.sjoerd.music4party.activities;
 
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.example.sjoerd.music4party.R;
 
 public class SettingsActivity extends AppCompatActivity {
 
