@@ -3,21 +3,32 @@ package com.example.sjoerd.music4party.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.sjoerd.music4party.VideoRecyclerAdapter;
 import com.example.sjoerd.music4party.models.Group;
 import com.example.sjoerd.music4party.R;
 import com.example.sjoerd.music4party.fragments.YoutubePlayerFragment;
+import com.example.sjoerd.music4party.models.Video;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GroupCreatorHomeActivity extends AppCompatActivity {
 
     private static final String TAG = GroupCreatorHomeActivity.class.getSimpleName();
     private YoutubePlayerFragment youTubePlayerFragment;
     private Group retrievedGroup;
+    private List<Video> videoList = new ArrayList<>();
+    private RecyclerView videoRecyclerView;
+    private VideoRecyclerAdapter videoAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +48,20 @@ public class GroupCreatorHomeActivity extends AppCompatActivity {
 
         // Initiate youtubePlayerFragment
         youTubePlayerFragment = new YoutubePlayerFragment(this, getSupportFragmentManager());
+
+        videoRecyclerView = findViewById(R.id._creator_recycler_videos);
+        videoRecyclerView.addItemDecoration(new DividerItemDecoration(GroupCreatorHomeActivity.this, LinearLayoutManager.HORIZONTAL));
+        videoAdapter = new VideoRecyclerAdapter(getApplicationContext(), videoList);
+        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(GroupCreatorHomeActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        videoRecyclerView.setLayoutManager(horizontalLayoutManager);
+        videoRecyclerView.setAdapter(videoAdapter);
+        videoList.add(new Video("Einaudi"));
+        videoList.add(new Video("Jacob's piano"));
+        videoList.add(new Video("Queen"));
+        videoList.add(new Video("Bohemian Rhapsody"));
+        videoList.add(new Video("Pachelbell"));
+        videoList.add(new Video("Hey brother"));
+
     }
 
     // inflate options in toolbar
