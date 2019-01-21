@@ -44,3 +44,11 @@ Created packages in the java folder to keep the directory neat.
 ### Decisions
 
 # day 9
+Working on Youtube Search
+
+
+# day 11
+Working on Youtube Search
+
+### Decisions
+- Videos currently in the playlist are now displayed in a horizontal recyclerview instead of a listview
