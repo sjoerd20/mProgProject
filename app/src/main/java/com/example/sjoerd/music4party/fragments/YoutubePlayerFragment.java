@@ -61,6 +61,9 @@ public class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListene
             youTubePlayer.setPlaybackEventListener(new VideoPlaybackListener());
             youTubePlayer.setPlayerStateChangeListener(new PlayerStateChangeListener());
         }
+        else {
+            youTubePlayer.play();
+        }
     }
 
     @Override
@@ -109,6 +112,7 @@ public class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListene
 
         @Override
         public void onStopped() {
+            youTubePlayer.play();
         }
 
         @Override
