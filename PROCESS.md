@@ -52,3 +52,9 @@ Working on Youtube Search
 
 ### Decisions
 - Videos currently in the playlist are now displayed in a horizontal recyclerview instead of a listview
+
+# day 12
+Working on YoutubeSearch and UI
+
+### Decisions
+- The search function is now placed in the same activity as the youtube player to keep the youtube videos playing while searching for new videos
