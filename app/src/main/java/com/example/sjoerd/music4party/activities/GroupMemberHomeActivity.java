@@ -1,3 +1,11 @@
+/*
+  Home activity for a group member. This activity contains the name of the current youtube video,
+  a list with the next videos and an search option to find new videos
+
+  @author      Sjoerd Terpstra
+
+ */
+
 package com.example.sjoerd.music4party.activities;
 
 import android.content.Intent;

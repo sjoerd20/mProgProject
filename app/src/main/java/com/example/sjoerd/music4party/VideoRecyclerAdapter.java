@@ -1,3 +1,10 @@
+/*
+  Adapter for showing the videos in the playlist
+
+  @author      Sjoerd Terpstra
+
+ */
+
 package com.example.sjoerd.music4party;
 
 import android.content.Context;

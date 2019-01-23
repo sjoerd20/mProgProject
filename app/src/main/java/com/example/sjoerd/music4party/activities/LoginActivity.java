@@ -1,3 +1,11 @@
+/*
+  Login activity. In this activity the user can create a new session as a group creator or join
+  a existent group through a login code
+
+  @author      Sjoerd Terpstra
+
+ */
+
 package com.example.sjoerd.music4party.activities;
 
 import android.content.Intent;

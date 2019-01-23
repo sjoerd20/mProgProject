@@ -1,3 +1,10 @@
+/*
+  This file handles the search of youtube videos. It interacts with the Youtube Data API
+
+  @author      Sjoerd Terpstra
+
+ */
+
 package com.example.sjoerd.music4party;
 
 import android.util.Log;
@@ -26,24 +33,26 @@ public class YoutubeSearch {
     private static final long NUMBER_OF_RESULTS = 5;
     private YouTube youTube;
     private static final String API_KEY = "AIzaSyB91qfzy3kS3ZjtK4YoJ7Wa78afJyY7OHQ ";
+    private String url = "https://www.googleapis.com/youtube/v3/search?part=id&q=tuto&type=video&key={YOUR_API_KEY}";
+
+    private NetHttpTransport netHttpTransport = new NetHttpTransport();
+    private JacksonFactory jacksonFactory = new JacksonFactory();
 
     public YoutubeSearch() {
     }
 
-    private List<SearchResult> search() {
+    public List<SearchResult> search(String searchText) {
         try {
-            youTube = new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(), new HttpRequestInitializer() {
+            youTube = new YouTube.Builder(netHttpTransport, jacksonFactory, new HttpRequestInitializer() {
                 @Override
                 public void initialize(HttpRequest request) throws IOException {
-
                 }
             }).setApplicationName("Music4Party").build();
 
-            String userQuery = "Einaudi";
 
             YouTube.Search.List search = youTube.search().list("id,snippet");
             search.setKey(API_KEY);
-            search.setQ(userQuery);
+            search.setQ(searchText);
             search.setType("video");
             search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
             search.setMaxResults(NUMBER_OF_RESULTS);
@@ -53,11 +62,12 @@ public class YoutubeSearch {
             if (searchResultList != null) {
                 return searchResultList;
             }
-                    }
-        catch (GoogleJsonResponseException e) {
-            Log.e("YoutubeSearchError", e.getDetails().getMessage());
+        } catch (GoogleJsonResponseException e) {
+            Log.e("GoogleJsonError", " " + e.getDetails().getMessage());
+        } catch (IOException e) {
+            Log.e("IOException", e.getMessage());
         } catch (Throwable t) {
-            Log.e("YoutubeSearchError", t.getMessage());
+            Log.e("ThrowableError", " " + t.getMessage() + t.getCause());
         }
         return null;
     }

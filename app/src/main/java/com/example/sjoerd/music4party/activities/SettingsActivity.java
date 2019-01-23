@@ -1,3 +1,11 @@
+/*
+  Settings activity. In this activity certain app settings can be changed to fit the users'
+  personal preferences
+
+  @author      Sjoerd Terpstra
+
+ */
+
 package com.example.sjoerd.music4party.activities;
 
 import android.support.annotation.Nullable;

@@ -1,3 +1,11 @@
+/*
+  Home activity for the group creator. This activity contains a Youtube video in a fragment,
+  a list with the next videos and an search option to find new videos
+
+  @author      Sjoerd Terpstra
+
+ */
+
 package com.example.sjoerd.music4party.activities;
 
 import android.content.Intent;
@@ -10,9 +18,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.sjoerd.music4party.VideoRecyclerAdapter;
+import com.example.sjoerd.music4party.YoutubeSearch;
 import com.example.sjoerd.music4party.models.Group;
 import com.example.sjoerd.music4party.R;
 import com.example.sjoerd.music4party.fragments.YoutubePlayerFragment;
@@ -29,6 +40,7 @@ public class GroupCreatorHomeActivity extends AppCompatActivity {
     private List<Video> videoList = new ArrayList<>();
     private RecyclerView videoRecyclerView;
     private VideoRecyclerAdapter videoAdapter;
+    private YoutubeSearch youtubeSearch;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,11 +57,14 @@ public class GroupCreatorHomeActivity extends AppCompatActivity {
             retrievedGroup = (Group) intent.getSerializableExtra("group");
             Toast.makeText(this, retrievedGroup.getGroupID(), Toast.LENGTH_LONG).show();
         }
+        // Initiate youtubesearch
+        youtubeSearch = new YoutubeSearch();
 
         // Initiate youtubePlayerFragment
         youTubePlayerFragment = new YoutubePlayerFragment(this, getSupportFragmentManager());
 
-        videoRecyclerView = findViewById(R.id._creator_recycler_videos);
+        // Create horizontal recyclerview for the videos currently in the playlist
+        videoRecyclerView = findViewById(R.id._creator_recycler_video);
         videoRecyclerView.addItemDecoration(new DividerItemDecoration(GroupCreatorHomeActivity.this, LinearLayoutManager.HORIZONTAL));
         videoAdapter = new VideoRecyclerAdapter(getApplicationContext(), videoList);
         LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(GroupCreatorHomeActivity.this, LinearLayoutManager.HORIZONTAL, false);
@@ -88,6 +103,15 @@ public class GroupCreatorHomeActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(menuItem);
+        }
+    }
+
+    // Search onClick method
+    public void onSearchClicked(View view) {
+        EditText searchTextView = findViewById(R.id.creatorSearchText);
+        String searchText = searchTextView.getText().toString();
+        if (!searchText.equals("")) {
+            youtubeSearch.search(searchText);
         }
     }
 }

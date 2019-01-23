@@ -1,3 +1,10 @@
+/*
+  This file handles the FireBase realtime database
+
+  @author      Sjoerd Terpstra
+
+ */
+
 package com.example.sjoerd.music4party;
 
 import com.example.sjoerd.music4party.models.Group;

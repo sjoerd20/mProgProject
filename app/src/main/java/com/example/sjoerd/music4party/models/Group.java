@@ -1,3 +1,10 @@
+/*
+  Represents a single group
+
+  @author      Sjoerd Terpstra
+
+ */
+
 package com.example.sjoerd.music4party.models;
 
 import java.io.Serializable;

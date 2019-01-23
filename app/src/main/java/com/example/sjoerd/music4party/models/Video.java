@@ -1,3 +1,10 @@
+/*
+  Contains all info about a video
+
+  @author      Sjoerd Terpstra
+
+ */
+
 package com.example.sjoerd.music4party.models;
 
 public class Video {

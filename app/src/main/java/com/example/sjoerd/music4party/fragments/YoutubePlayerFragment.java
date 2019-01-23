@@ -1,3 +1,10 @@
+/*
+  Contains the youtubeFragmentPlayer
+
+  @author      Sjoerd Terpstra
+
+ */
+
 package com.example.sjoerd.music4party.fragments;
 
 import android.app.Activity;
