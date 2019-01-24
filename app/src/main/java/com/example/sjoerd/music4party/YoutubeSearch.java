@@ -32,7 +32,7 @@ import java.util.List;
 public class YoutubeSearch {
     private static final long NUMBER_OF_RESULTS = 5;
     private YouTube youTube;
-    private static final String API_KEY = "AIzaSyB91qfzy3kS3ZjtK4YoJ7Wa78afJyY7OHQ ";
+    private static final String API_KEY = "AIzaSyAn6SA9F2sxxSCeiWJK0Dq7v2oe8qbfcvQ ";
     private String url = "https://www.googleapis.com/youtube/v3/search?part=id&q=tuto&type=video&key={YOUR_API_KEY}";
 
     private NetHttpTransport netHttpTransport = new NetHttpTransport();

@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.sjoerd.music4party.VideoRecyclerAdapter;
 import com.example.sjoerd.music4party.YoutubeSearch;
+import com.example.sjoerd.music4party.YoutubeSearchRequest;
 import com.example.sjoerd.music4party.models.Group;
 import com.example.sjoerd.music4party.R;
 import com.example.sjoerd.music4party.fragments.YoutubePlayerFragment;
@@ -32,7 +33,7 @@ import com.example.sjoerd.music4party.models.Video;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GroupCreatorHomeActivity extends AppCompatActivity {
+public class GroupCreatorHomeActivity extends AppCompatActivity implements YoutubeSearchRequest.Callback {
 
     private static final String TAG = GroupCreatorHomeActivity.class.getSimpleName();
     private YoutubePlayerFragment youTubePlayerFragment;
@@ -111,7 +112,19 @@ public class GroupCreatorHomeActivity extends AppCompatActivity {
         EditText searchTextView = findViewById(R.id.creatorSearchText);
         String searchText = searchTextView.getText().toString();
         if (!searchText.equals("")) {
-            youtubeSearch.search(searchText);
+//            youtubeSearch.search(searchText);
+            YoutubeSearchRequest youtubeSearchRequest = new YoutubeSearchRequest(this);
+            youtubeSearchRequest.getVideos(this, "Einaudi");
         }
+    }
+
+    @Override
+    public void gotVideos(ArrayList<Video> videos) {
+        Toast.makeText(this, "done!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void gotVideosError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }
