@@ -47,6 +47,16 @@ public class YoutubeSearchRequest implements Response.Listener<JSONObject>, Resp
     public void onResponse(JSONObject response) {
         try {
             JSONArray itemsArray = response.getJSONArray("items");
+
+            // for each video in items
+            for (int i = 0; i < itemsArray.length(); i++) {
+                JSONObject videoObject = itemsArray.getJSONObject(i);
+                JSONObject id = videoObject.getJSONObject("id");
+                String videoId = id.getString("videoId");
+                Video video = new Video("Title", videoId);
+                videos.add(video);
+            }
+
             Log.i("Response", "successful");
             activity.gotVideos(videos);
         }

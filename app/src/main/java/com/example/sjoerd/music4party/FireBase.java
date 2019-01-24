@@ -34,7 +34,7 @@ public class FireBase {
             groupRef.child(groupID).setValue(group);
         }
 
-        // Of not creator check login code and return group
+        // If not creator check login code and return group
         else {
             // TODO check loginCode and create group
             DatabaseReference groupRef = database.getReference("groups");

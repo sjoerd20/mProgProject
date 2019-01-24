@@ -71,12 +71,12 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
         LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(GroupCreatorHomeActivity.this, LinearLayoutManager.HORIZONTAL, false);
         videoRecyclerView.setLayoutManager(horizontalLayoutManager);
         videoRecyclerView.setAdapter(videoAdapter);
-        videoList.add(new Video("Einaudi"));
-        videoList.add(new Video("Jacob's piano"));
-        videoList.add(new Video("Queen"));
-        videoList.add(new Video("Bohemian Rhapsody"));
-        videoList.add(new Video("Pachelbell"));
-        videoList.add(new Video("Hey brother"));
+        videoList.add(new Video("Einaudi", " "));
+        videoList.add(new Video("Jacob's piano", " "));
+        videoList.add(new Video("Queen", " "));
+        videoList.add(new Video("Bohemian Rhapsody", " "));
+        videoList.add(new Video("Pachelbell", " "));
+        videoList.add(new Video("Hey brother", " "));
 
     }
 
@@ -112,14 +112,15 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
         EditText searchTextView = findViewById(R.id.creatorSearchText);
         String searchText = searchTextView.getText().toString();
         if (!searchText.equals("")) {
-//            youtubeSearch.search(searchText);
+            youtubeSearch.search(searchText);
             YoutubeSearchRequest youtubeSearchRequest = new YoutubeSearchRequest(this);
-            youtubeSearchRequest.getVideos(this, "Einaudi");
+            youtubeSearchRequest.getVideos(this, searchText);
         }
     }
 
     @Override
     public void gotVideos(ArrayList<Video> videos) {
+        youTubePlayerFragment.newVideo(videos.get(0).getVideoId());
         Toast.makeText(this, "done!", Toast.LENGTH_LONG).show();
     }
 
