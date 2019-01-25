@@ -58,3 +58,14 @@ Working on YoutubeSearch and UI
 
 ### Decisions
 - The search function is now placed in the same activity as the youtube player to keep the youtube videos playing while searching for new videos
+
+# day 13
+Working on YoutubeSearch
+
+### Decisions
+- Doing the youtube search through a volley request with a URL instead of using the youtube builder
+
+# day 14
+Hackathon
+
+# day 15
