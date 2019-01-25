@@ -69,3 +69,6 @@ Working on YoutubeSearch
 Hackathon
 
 # day 15
+
+# Decisions
+- Created new model Playlist to hold the videos in the playlist
