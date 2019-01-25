@@ -44,7 +44,7 @@ public class FireBase {
         }
     }
 
-    // Create singleton
+    // Make singleton
     public static FireBase getInstance(boolean isCreator, String key) {
         if (instance == null) {
             instance = new FireBase(isCreator, key);

@@ -7,9 +7,12 @@
 
 package com.example.sjoerd.music4party.models;
 
+import com.google.api.services.youtube.model.Thumbnail;
+
 public class Video {
     private String videoTitle;
     private String videoId;
+    private Thumbnail thumbnail;
 
     public Video(String videoTitle, String videoId) {
         this.videoTitle = videoTitle;
