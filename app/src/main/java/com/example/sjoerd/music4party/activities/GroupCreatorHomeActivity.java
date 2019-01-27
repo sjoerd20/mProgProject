@@ -56,7 +56,7 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
         Intent intent = getIntent();
         if (retrievedGroup == null) {
             retrievedGroup = (Group) intent.getSerializableExtra("group");
-            Toast.makeText(this, retrievedGroup.getGroupID(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, retrievedGroup.getGroupId(), Toast.LENGTH_LONG).show();
         }
         // Initiate youtubesearch
         youtubeSearch = new YoutubeSearch();
@@ -95,6 +95,7 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
             case R.id.action_settings:
                 Intent intentSettings = new Intent(GroupCreatorHomeActivity.this,
                                                     SettingsActivity.class);
+                intentSettings.putExtra("group", retrievedGroup);
                 startActivity(intentSettings);
                 return true;
             case R.id.action_search:

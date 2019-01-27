@@ -8,6 +8,7 @@
 
 package com.example.sjoerd.music4party.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.sjoerd.music4party.FireBase;
 import com.example.sjoerd.music4party.models.Group;
@@ -24,12 +26,14 @@ public class LoginActivity extends AppCompatActivity {
 
     private int loginCode;
     private Group group;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        this.context = getApplicationContext();
         // Set toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.loginToolbar);
         setSupportActionBar(toolbar);
@@ -48,18 +52,30 @@ public class LoginActivity extends AppCompatActivity {
             // TODO check login code with firebase database and save user to database
             // Retrieve group from database
 
-            EditText loginCodeEditText = findViewById(R.id.loginCodeText);
-            String loginCodeText = loginCodeEditText.getText().toString();
+            EditText loginCodeText = findViewById(R.id.loginCodeText);
+            String loginText = loginCodeText.getText().toString();
+            if (!loginText.equals("")) {
+                loginCode = Integer.parseInt(loginCodeText.getText().toString());
+                Toast.makeText(context, " " + loginCode, Toast.LENGTH_LONG).show();
+                FireBase fireBase = FireBase.getInstance(false, loginCode);
+                Group group = fireBase.getGroup();
 
-            FireBase fireBase = FireBase.getInstance(false, loginCodeText);
-            Group group = fireBase.getGroup();
-
-            // Start the GroupMemberHomeActivity
-            Intent intent = new Intent(LoginActivity.this,
-                                        GroupMemberHomeActivity.class);
-            intent.putExtra("group", group);
-            startActivity(intent);
-            finish();
+                // Check if login is successful. If group is null, login was not successful
+                if (group == null) {
+                    Toast.makeText(context, "Login not successful, try again!", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Start the GroupMemberHomeActivity
+                    Intent intent = new Intent(LoginActivity.this,
+                            GroupMemberHomeActivity.class);
+                    intent.putExtra("group", group);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+            // If nothing is entered, prompt the user to try again
+            else {
+                Toast.makeText(context, "Input required, try again!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -67,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
     private class LoginCreateButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            FireBase fireBase = FireBase.getInstance(true, null);
+            FireBase fireBase = FireBase.getInstance(true, 1234);
             Group group = fireBase.getGroup();
 
             // Start the GroupCreatorHomeActivity

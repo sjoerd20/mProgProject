@@ -11,21 +11,16 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Group implements Serializable {
-    private String groupID;
     private int loginCode;
+    private String groupId;
     private ArrayList<String> users = new ArrayList<>();
 
-    public Group(String groupID, int loginCode) {
-        this.groupID = groupID;
+    public Group() {
+    }
+
+    public Group(int loginCode, String groupId) {
         this.loginCode = loginCode;
-    }
-
-    public String getGroupID() {
-        return groupID;
-    }
-
-    public void setGroupID(String groupID) {
-        this.groupID = groupID;
+        this.groupId = groupId;
     }
 
     public int getLoginCode() {
@@ -43,4 +38,14 @@ public class Group implements Serializable {
     public void setUsers(ArrayList<String> users) {
         this.users = users;
     }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
+    }
+
+
 }

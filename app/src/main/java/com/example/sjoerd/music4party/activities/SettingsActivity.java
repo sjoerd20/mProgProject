@@ -8,6 +8,7 @@
 
 package com.example.sjoerd.music4party.activities;
 
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -17,10 +18,15 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sjoerd.music4party.R;
+import com.example.sjoerd.music4party.models.Group;
 
 public class SettingsActivity extends AppCompatActivity {
+
+    private Group retrievedGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,19 @@ public class SettingsActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        // Receive intent
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            if (retrievedGroup == null) {
+                retrievedGroup = (Group) intent.getSerializableExtra("group");
+            }
+        }
+
+        // Set fields
+        TextView loginCodeCode = findViewById(R.id.loginCodeCode);
+        loginCodeCode.setText(String.valueOf(retrievedGroup.getLoginCode()));
     }
 
     // inflate options in toolbar

@@ -37,7 +37,7 @@ public class GroupMemberHomeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (retrievedGroup == null) {
             retrievedGroup = (Group) intent.getSerializableExtra("group");
-            Toast.makeText(this, retrievedGroup.getGroupID(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, retrievedGroup.getGroupId(), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -56,6 +56,7 @@ public class GroupMemberHomeActivity extends AppCompatActivity {
             case R.id.action_settings:
                 Intent intentSettings = new Intent(GroupMemberHomeActivity.this,
                         SettingsActivity.class);
+                intentSettings.putExtra("group", retrievedGroup);
                 startActivity(intentSettings);
                 return true;
             case R.id.action_search:

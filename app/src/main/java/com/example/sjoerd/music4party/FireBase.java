@@ -7,20 +7,25 @@
 
 package com.example.sjoerd.music4party;
 
+import android.support.annotation.NonNull;
+
 import com.example.sjoerd.music4party.models.Group;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 // This class is a singleton
 public class FireBase {
 
     private static FireBase instance;
-    private String groupID;
+    private String groupId;
     private FirebaseDatabase database;
     private Group group;
 
     // Constructor
-    private FireBase(boolean isCreator, String key) {
+    private FireBase(boolean isCreator, int loginCode) {
 
         // Create database
         this.database = FirebaseDatabase.getInstance();
@@ -28,24 +33,41 @@ public class FireBase {
         if (isCreator) {
             // Create new group
             DatabaseReference groupRef = database.getReference("groups");
-            groupID = groupRef.push().getKey();
-
-            group = new Group(groupID, 1234);
-            groupRef.child(groupID).setValue(group);
+            groupId = Integer.toString(loginCode);
+            group = new Group(loginCode, groupId);
+            groupRef.child(groupId).setValue(group);
         }
 
         // If not creator check login code and return group
         else {
-            // TODO check loginCode and create group
-            DatabaseReference groupRef = database.getReference("groups");
+            // TODO check loginCode and join group
+            final DatabaseReference groupRef = database.getReference("groups");
+            final int user_login = loginCode;
+            groupRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+                        Group retrievedGroup = child.getValue(Group.class);
+                        if (retrievedGroup.getLoginCode() == user_login) {
+                            group = new Group(user_login, retrievedGroup.getGroupId());
+                            return;
+                        }
+                    }
 
-            group = new Group(key, 1234);
-            groupRef.child(key).setValue(group);
+                    // If not returned, set group to null
+                    group = null;
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
         }
     }
 
     // Make singleton
-    public static FireBase getInstance(boolean isCreator, String key) {
+    public static FireBase getInstance(boolean isCreator, int key) {
         if (instance == null) {
             instance = new FireBase(isCreator, key);
         }
@@ -55,5 +77,4 @@ public class FireBase {
     public Group getGroup() {
         return group;
     }
-
 }
