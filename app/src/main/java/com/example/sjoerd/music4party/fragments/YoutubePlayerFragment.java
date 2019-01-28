@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.util.Log;
 
 import com.example.sjoerd.music4party.R;
+import com.example.sjoerd.music4party.models.Playlist;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
@@ -23,7 +24,7 @@ import static android.content.ContentValues.TAG;
 public class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListener {
 
     private static final String API_KEY = "AIzaSyB91qfzy3kS3ZjtK4YoJ7Wa78afJyY7OHQ ";
-    private ArrayList<String> video_codes = new ArrayList<String>();
+    private Playlist playlist;
     private static final String VIDEO_CODE = "FoCG-WNsZio";
     private static final String VIDEO_CODE2 = "8ebRM6vSYXw";
 
@@ -35,9 +36,10 @@ public class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListene
     /*
      * Constructor. Creates a YoutubePlayerSupportFragment to play the videos
      */
-    public YoutubePlayerFragment(Activity activity, FragmentManager supportFragmentManager) {
+    public YoutubePlayerFragment(Activity activity, FragmentManager supportFragmentManager, Playlist playlist) {
         this.activity = activity;
         this.supportFragmentManager = supportFragmentManager;
+        this.playlist = playlist;
 //        video_codes.add("FoCG-WNsZio");
 //        video_codes.add("8ebRM6vSYXw");
 
@@ -101,7 +103,7 @@ public class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListene
         @Override
         public void onVideoEnded() {
             // Cue next video
-            youTubePlayer.loadVideo(VIDEO_CODE2);
+            youTubePlayer.loadVideo(playlist.retrieveVideo().getVideoId());
         }
 
         @Override

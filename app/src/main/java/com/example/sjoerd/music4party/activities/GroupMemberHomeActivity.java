@@ -19,10 +19,12 @@ import android.widget.Toast;
 
 import com.example.sjoerd.music4party.models.Group;
 import com.example.sjoerd.music4party.R;
+import com.example.sjoerd.music4party.models.Playlist;
 
 public class GroupMemberHomeActivity extends AppCompatActivity {
 
     private Group retrievedGroup;
+    private Playlist retrievedPlaylist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class GroupMemberHomeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (retrievedGroup == null) {
             retrievedGroup = (Group) intent.getSerializableExtra("group");
+            retrievedPlaylist = (Playlist) intent.getSerializableExtra("playlist");
             Toast.makeText(this, retrievedGroup.getGroupId(), Toast.LENGTH_LONG).show();
         }
     }

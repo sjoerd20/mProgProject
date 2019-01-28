@@ -2,9 +2,10 @@ package com.example.sjoerd.music4party.models;
 
 import com.example.sjoerd.music4party.FireBase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Playlist {
+public class Playlist implements Serializable {
 
     private static Playlist instance;
 
@@ -38,7 +39,20 @@ public class Playlist {
     }
 
     // Remove video from playlist
-    public void removeVideo(Video video) {
-        this.playlist.remove(0);
+    public void removeVideo() {
+        if (playlist.size() != 0) {
+            this.playlist.remove(0);
+        }
+    }
+
+    // Retrieve video from playlist and remove it
+    public Video retrieveVideo() {
+        Video nextVideo;
+        if (playlist.size() != 0) {
+            nextVideo = playlist.get(0);
+            removeVideo();
+            return nextVideo;
+        }
+        return null;
     }
 }

@@ -27,6 +27,7 @@ import com.example.sjoerd.music4party.YoutubeSearchRequest;
 import com.example.sjoerd.music4party.models.Group;
 import com.example.sjoerd.music4party.R;
 import com.example.sjoerd.music4party.fragments.YoutubePlayerFragment;
+import com.example.sjoerd.music4party.models.Playlist;
 import com.example.sjoerd.music4party.models.Video;
 
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
     private YoutubePlayerFragment youTubePlayerFragment;
     private Group retrievedGroup;
     private List<Video> videoList = new ArrayList<>();
+    private Playlist retrievedPlaylist;
     private RecyclerView videoRecyclerView;
     private VideoRecyclerAdapter videoAdapter;
 
@@ -54,11 +56,12 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
         Intent intent = getIntent();
         if (retrievedGroup == null) {
             retrievedGroup = (Group) intent.getSerializableExtra("group");
+            retrievedPlaylist = (Playlist) intent.getSerializableExtra("playlist");
             Toast.makeText(this, retrievedGroup.getGroupId(), Toast.LENGTH_LONG).show();
         }
 
         // Initiate youtubePlayerFragment
-        youTubePlayerFragment = new YoutubePlayerFragment(this, getSupportFragmentManager());
+        youTubePlayerFragment = new YoutubePlayerFragment(this, getSupportFragmentManager(), retrievedPlaylist);
 
         // Create horizontal recyclerview for the videos currently in the playlist
         videoRecyclerView = findViewById(R.id._creator_recycler_video);

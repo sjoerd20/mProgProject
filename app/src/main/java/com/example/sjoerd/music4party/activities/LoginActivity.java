@@ -73,6 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this,
                             GroupMemberHomeActivity.class);
                     intent.putExtra("group", group);
+                    intent.putExtra("playlist", playlist);
                     startActivity(intent);
                     finish();
                 }
@@ -90,12 +91,14 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             FireBase fireBase = FireBase.getInstance(true, 1234);
-            Group group = fireBase.getGroup();
+            group = fireBase.getGroup();
+            playlist = fireBase.getPlaylist();
 
             // Start the GroupCreatorHomeActivity
             Intent intent = new Intent(LoginActivity.this,
                                         GroupCreatorHomeActivity.class);
             intent.putExtra("group", group);
+            intent.putExtra("playlist", playlist);
             startActivity(intent);
             finish();
         }
