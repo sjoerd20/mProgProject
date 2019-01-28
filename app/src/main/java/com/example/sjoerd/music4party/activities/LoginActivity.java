@@ -21,11 +21,13 @@ import android.widget.Toast;
 import com.example.sjoerd.music4party.FireBase;
 import com.example.sjoerd.music4party.models.Group;
 import com.example.sjoerd.music4party.R;
+import com.example.sjoerd.music4party.models.Playlist;
 
 public class LoginActivity extends AppCompatActivity {
 
     private int loginCode;
     private Group group;
+    private Playlist playlist;
     private Context context;
 
     @Override
@@ -49,16 +51,19 @@ public class LoginActivity extends AppCompatActivity {
     private class LoginButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            // TODO check login code with firebase database and save user to database
-            // Retrieve group from database
 
+            // Retrieve group from database
             EditText loginCodeText = findViewById(R.id.loginCodeText);
             String loginText = loginCodeText.getText().toString();
             if (!loginText.equals("")) {
                 loginCode = Integer.parseInt(loginCodeText.getText().toString());
+
                 Toast.makeText(context, " " + loginCode, Toast.LENGTH_LONG).show();
+
+                // Create firebase, group & playlist instances
                 FireBase fireBase = FireBase.getInstance(false, loginCode);
-                Group group = fireBase.getGroup();
+                group = fireBase.getGroup();
+                playlist = fireBase.getPlaylist();
 
                 // Check if login is successful. If group is null, login was not successful
                 if (group == null) {
@@ -72,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                 }
             }
+
             // If nothing is entered, prompt the user to try again
             else {
                 Toast.makeText(context, "Input required, try again!", Toast.LENGTH_SHORT).show();

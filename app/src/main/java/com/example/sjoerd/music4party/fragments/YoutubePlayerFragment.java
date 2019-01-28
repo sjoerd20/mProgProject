@@ -23,7 +23,7 @@ import static android.content.ContentValues.TAG;
 public class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListener {
 
     private static final String API_KEY = "AIzaSyB91qfzy3kS3ZjtK4YoJ7Wa78afJyY7OHQ ";
-//    private ArrayList<String> video_codes = new ArrayList<String>();
+    private ArrayList<String> video_codes = new ArrayList<String>();
     private static final String VIDEO_CODE = "FoCG-WNsZio";
     private static final String VIDEO_CODE2 = "8ebRM6vSYXw";
 
@@ -32,7 +32,9 @@ public class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListene
     private FragmentManager supportFragmentManager;
     private YouTubePlayer youTubePlayer;
 
-    // Constructor
+    /*
+     * Constructor. Creates a YoutubePlayerSupportFragment to play the videos
+     */
     public YoutubePlayerFragment(Activity activity, FragmentManager supportFragmentManager) {
         this.activity = activity;
         this.supportFragmentManager = supportFragmentManager;
@@ -45,7 +47,6 @@ public class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListene
         if (youTubePlayerSupportFragment == null) {
             return;
         }
-
         youTubePlayerSupportFragment.initialize(API_KEY, this);
     }
 

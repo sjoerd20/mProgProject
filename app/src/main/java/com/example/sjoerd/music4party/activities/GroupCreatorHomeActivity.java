@@ -23,7 +23,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.sjoerd.music4party.VideoRecyclerAdapter;
-import com.example.sjoerd.music4party.YoutubeSearch;
 import com.example.sjoerd.music4party.YoutubeSearchRequest;
 import com.example.sjoerd.music4party.models.Group;
 import com.example.sjoerd.music4party.R;
@@ -41,7 +40,6 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
     private List<Video> videoList = new ArrayList<>();
     private RecyclerView videoRecyclerView;
     private VideoRecyclerAdapter videoAdapter;
-    private YoutubeSearch youtubeSearch;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,8 +56,6 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
             retrievedGroup = (Group) intent.getSerializableExtra("group");
             Toast.makeText(this, retrievedGroup.getGroupId(), Toast.LENGTH_LONG).show();
         }
-        // Initiate youtubesearch
-        youtubeSearch = new YoutubeSearch();
 
         // Initiate youtubePlayerFragment
         youTubePlayerFragment = new YoutubePlayerFragment(this, getSupportFragmentManager());
@@ -71,6 +67,7 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
         LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(GroupCreatorHomeActivity.this, LinearLayoutManager.HORIZONTAL, false);
         videoRecyclerView.setLayoutManager(horizontalLayoutManager);
         videoRecyclerView.setAdapter(videoAdapter);
+
         videoList.add(new Video("Einaudi", " "));
         videoList.add(new Video("Jacob's piano", " "));
         videoList.add(new Video("Queen", " "));
@@ -113,7 +110,6 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
         EditText searchTextView = findViewById(R.id.creatorSearchText);
         String searchText = searchTextView.getText().toString();
         if (!searchText.equals("")) {
-            youtubeSearch.search(searchText);
             YoutubeSearchRequest youtubeSearchRequest = new YoutubeSearchRequest(this);
             youtubeSearchRequest.getVideos(this, searchText);
         }
