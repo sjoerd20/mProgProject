@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.sjoerd.music4party.FireBase;
 import com.example.sjoerd.music4party.VideoRecyclerAdapter;
 import com.example.sjoerd.music4party.YoutubeSearchRequest;
 import com.example.sjoerd.music4party.models.Group;
@@ -38,6 +39,7 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
     private static final String TAG = GroupCreatorHomeActivity.class.getSimpleName();
     private YoutubePlayerFragment youTubePlayerFragment;
     private Group retrievedGroup;
+    private FireBase retrievedFireBase;
     private List<Video> videoList = new ArrayList<>();
     private Playlist retrievedPlaylist;
     private RecyclerView videoRecyclerView;
@@ -57,6 +59,8 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
         if (retrievedGroup == null) {
             retrievedGroup = (Group) intent.getSerializableExtra("group");
             retrievedPlaylist = (Playlist) intent.getSerializableExtra("playlist");
+            retrievedFireBase = FireBase.getInstance(false, retrievedGroup.getLoginCode());
+
             Toast.makeText(this, retrievedGroup.getGroupId(), Toast.LENGTH_LONG).show();
         }
 
@@ -80,7 +84,9 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
 
     }
 
-    // inflate options in toolbar
+    /*
+     * Inflate options in toolbar
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -88,7 +94,9 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
         return true;
     }
 
-    // extract the user input of the toolbar
+    /*
+     * Extract the user input of the toolbar
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
@@ -108,7 +116,9 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
         }
     }
 
-    // Search onClick method
+    /*
+     * Search videos with the Youtube Data API using a keyword input from the user
+     */
     public void onSearchClicked(View view) {
         EditText searchTextView = findViewById(R.id.creatorSearchText);
         String searchText = searchTextView.getText().toString();
@@ -118,9 +128,17 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
         }
     }
 
+    /*
+     * If successful found a video, play it
+     */
     @Override
     public void gotVideos(ArrayList<Video> videos) {
-        youTubePlayerFragment.newVideo(videos.get(0).getVideoId());
+        try {
+            youTubePlayerFragment.newVideo(videos.get(0).getVideoId());
+        }
+        catch(IndexOutOfBoundsException e) {
+            Toast.makeText(this, "No matching videos found", Toast.LENGTH_LONG).show();
+        }
         Toast.makeText(this, "done!", Toast.LENGTH_LONG).show();
     }
 

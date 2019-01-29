@@ -63,7 +63,9 @@ public class SettingsActivity extends AppCompatActivity {
         loginCodeCode.setText(String.valueOf(retrievedGroup.getLoginCode()));
     }
 
-    // inflate options in toolbar
+    /*
+     * Inflate options in toolbar
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

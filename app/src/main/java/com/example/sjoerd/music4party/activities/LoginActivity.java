@@ -47,7 +47,10 @@ public class LoginActivity extends AppCompatActivity {
         loginCreateButton.setOnClickListener(new LoginCreateButtonClickListener());
     }
 
-    // Listener for login code OK button
+    /*
+     * Joins a existing session as a group member. Firebase, Group and Playlist are instantiated and
+     * passed to GroupMemberHomeActivity
+     */
     private class LoginButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
@@ -68,14 +71,15 @@ public class LoginActivity extends AppCompatActivity {
                 // Check if login is successful. If group is null, login was not successful
                 if (group == null) {
                     Toast.makeText(context, "Login not successful, try again!", Toast.LENGTH_SHORT).show();
-                } else {
+                }
+                else {
+
                     // Start the GroupMemberHomeActivity
                     Intent intent = new Intent(LoginActivity.this,
                             GroupMemberHomeActivity.class);
                     intent.putExtra("group", group);
                     intent.putExtra("playlist", playlist);
                     startActivity(intent);
-                    finish();
                 }
             }
 
@@ -86,7 +90,10 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    // Listener for create new session button
+    /*
+     * Creates a new session as group creator. Firebase, Group and Playlist are instantiated and
+     * passed to GroupCreatorHomeActivity
+     */
     private class LoginCreateButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
@@ -100,7 +107,6 @@ public class LoginActivity extends AppCompatActivity {
             intent.putExtra("group", group);
             intent.putExtra("playlist", playlist);
             startActivity(intent);
-            finish();
         }
     }
 }

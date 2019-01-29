@@ -12,11 +12,18 @@ import com.google.api.services.youtube.model.Thumbnail;
 public class Video {
     private String videoTitle;
     private String videoId;
+    private String thumbnailURL;
     private Thumbnail thumbnail;
 
     public Video(String videoTitle, String videoId) {
         this.videoTitle = videoTitle;
         this.videoId = videoId;
+    }
+
+    public Video(String videoTitle, String videoId, String thumbnailURL) {
+        this.videoTitle = videoTitle;
+        this.videoId = videoId;
+        this.thumbnailURL = thumbnailURL;
     }
 
     public String getVideoTitle() {
@@ -33,5 +40,21 @@ public class Video {
 
     public void setVideoId(String videoId) {
         this.videoId = videoId;
+    }
+
+    public String getThumbnailURL() {
+        return thumbnailURL;
+    }
+
+    public void setThumbnailURL(String thumbnailURL) {
+        this.thumbnailURL = thumbnailURL;
+    }
+
+    public Thumbnail getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(Thumbnail thumbnail) {
+        this.thumbnail = thumbnail;
     }
 }

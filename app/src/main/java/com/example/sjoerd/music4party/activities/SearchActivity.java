@@ -35,7 +35,9 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
-    // inflate options in toolbar
+    /*
+     * Inflate options in toolbar
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -43,7 +45,9 @@ public class SearchActivity extends AppCompatActivity {
         return true;
     }
 
-    // extract the user input of the toolbar
+    /*
+     * Extract the user input of the toolbar
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {

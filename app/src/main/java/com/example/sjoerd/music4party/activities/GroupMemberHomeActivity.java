@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.sjoerd.music4party.FireBase;
 import com.example.sjoerd.music4party.models.Group;
 import com.example.sjoerd.music4party.R;
 import com.example.sjoerd.music4party.models.Playlist;
@@ -25,6 +26,7 @@ public class GroupMemberHomeActivity extends AppCompatActivity {
 
     private Group retrievedGroup;
     private Playlist retrievedPlaylist;
+    private FireBase retrievedFireBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +42,15 @@ public class GroupMemberHomeActivity extends AppCompatActivity {
         if (retrievedGroup == null) {
             retrievedGroup = (Group) intent.getSerializableExtra("group");
             retrievedPlaylist = (Playlist) intent.getSerializableExtra("playlist");
+            retrievedFireBase = FireBase.getInstance(false, retrievedGroup.getLoginCode());
+
             Toast.makeText(this, retrievedGroup.getGroupId(), Toast.LENGTH_LONG).show();
         }
     }
 
-    // inflate options in toolbar
+    /*
+     * Inflate options in toolbar
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -52,7 +58,9 @@ public class GroupMemberHomeActivity extends AppCompatActivity {
         return true;
     }
 
-    // extract the user input of the toolbar
+    /*
+     * Extract the user input of the toolbar
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {

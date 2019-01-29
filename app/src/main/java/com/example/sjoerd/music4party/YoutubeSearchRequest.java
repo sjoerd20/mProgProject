@@ -21,8 +21,13 @@ import java.util.ArrayList;
 public class YoutubeSearchRequest implements Response.Listener<JSONObject>, Response.ErrorListener {
 
     private static final String API_KEY = "AIzaSyAn6SA9F2sxxSCeiWJK0Dq7v2oe8qbfcvQ";
-    private String url_1 = "https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=";
-    private String url_2 = "&type=video&key=";
+    private int MAX_RESULTS = 5;
+
+    private String url1 = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&" +
+            "maxResults=" + MAX_RESULTS + "&q=";
+    private String url2 = "&type=video&fields=items(id%2FvideoId%2Csnippet%2Fthumbnails%2Fdefault)&key=";
+//    private String url_1 = "https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=";
+//    private String url_2 = "&type=video&key=";
 
     private Context context;
     private ArrayList<Video> videos = new ArrayList<>();
@@ -51,9 +56,16 @@ public class YoutubeSearchRequest implements Response.Listener<JSONObject>, Resp
             // for each video in items
             for (int i = 0; i < itemsArray.length(); i++) {
                 JSONObject videoObject = itemsArray.getJSONObject(i);
+
+                // Get video id
                 JSONObject id = videoObject.getJSONObject("id");
                 String videoId = id.getString("videoId");
-                Video video = new Video("Title", videoId);
+
+                // Get video thumbnail
+                JSONObject thumbnails = videoObject.getJSONObject("snippet").getJSONObject("thumbnails").getJSONObject("default");
+                String thumbnailURL = thumbnails.getString("url");
+
+                Video video = new Video("Title", videoId, thumbnailURL);
                 videos.add(video);
             }
 
@@ -69,7 +81,7 @@ public class YoutubeSearchRequest implements Response.Listener<JSONObject>, Resp
         this.activity = activity;
 
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = url_1 + searchText + url_2 + API_KEY;
+        String url = url1 + searchText + url2 + API_KEY;
 
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null, this, this);
