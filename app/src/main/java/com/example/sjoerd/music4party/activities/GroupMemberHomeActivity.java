@@ -15,14 +15,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.sjoerd.music4party.FireBase;
+import com.example.sjoerd.music4party.YoutubeSearchRequest;
 import com.example.sjoerd.music4party.models.Group;
 import com.example.sjoerd.music4party.R;
 import com.example.sjoerd.music4party.models.Playlist;
+import com.example.sjoerd.music4party.models.Video;
 
-public class GroupMemberHomeActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class GroupMemberHomeActivity extends AppCompatActivity implements YoutubeSearchRequest.Callback {
 
     private Group retrievedGroup;
     private Playlist retrievedPlaylist;
@@ -78,5 +84,39 @@ public class GroupMemberHomeActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(menuItem);
         }
+    }
+
+    /*
+     * Search videos with the Youtube Data API using a keyword input from the user
+     */
+    public void onSearchClicked(View view) {
+        EditText searchTextView = findViewById(R.id.creatorSearchText);
+        String searchText = searchTextView.getText().toString();
+        if (!searchText.equals("")) {
+            YoutubeSearchRequest youtubeSearchRequest = new YoutubeSearchRequest(this);
+            youtubeSearchRequest.getVideos(this, searchText);
+        }
+    }
+
+    /*
+     * If successful found a video, play it
+     */
+    @Override
+    public void gotVideos(ArrayList<Video> videos) {
+        try {
+            // Update playlist
+            retrievedPlaylist.removeVideo();
+            retrievedPlaylist.addVideo(videos.get(0));
+            retrievedFireBase.changePlaylist(retrievedPlaylist);
+        }
+        catch(IndexOutOfBoundsException e) {
+            Toast.makeText(this, "No matching videos found", Toast.LENGTH_LONG).show();
+        }
+        Toast.makeText(this, "done!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void gotVideosError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }

@@ -137,9 +137,7 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
             // Update playlist
             retrievedPlaylist.removeVideo();
             retrievedPlaylist.addVideo(videos.get(0));
-
             retrievedFireBase.changePlaylist(retrievedPlaylist);
-//            youTubePlayerFragment.newVideo(videos.get(0).getVideoId());
         }
         catch(IndexOutOfBoundsException e) {
             Toast.makeText(this, "No matching videos found", Toast.LENGTH_LONG).show();

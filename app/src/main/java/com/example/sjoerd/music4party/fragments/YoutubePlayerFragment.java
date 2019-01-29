@@ -138,8 +138,4 @@ public class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListene
         public void onSeekTo(int i) {
         }
     }
-
-    public void newVideo(String videoId) {
-        youTubePlayer.loadVideo(videoId);
-    }
 }
