@@ -13,6 +13,7 @@ import android.util.Log;
 
 import com.example.sjoerd.music4party.R;
 import com.example.sjoerd.music4party.models.Playlist;
+import com.example.sjoerd.music4party.models.Video;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
@@ -64,7 +65,7 @@ public class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListene
             youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
             youTubePlayer.setShowFullscreenButton(false);
 
-            // Cue video
+            // Cue video from playlist
             youTubePlayer.loadVideo(VIDEO_CODE);
 
             // add listeners
@@ -102,8 +103,12 @@ public class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListene
 
         @Override
         public void onVideoEnded() {
-            // Cue next video
-            youTubePlayer.loadVideo(playlist.retrieveVideo().getVideoId());
+
+            // Cue next  from playlist
+            Video nextVideo = playlist.retrieveVideo();
+            if (nextVideo != null) {
+                youTubePlayer.loadVideo(nextVideo.getVideoId());
+            }
         }
 
         @Override

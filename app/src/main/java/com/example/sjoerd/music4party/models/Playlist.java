@@ -9,7 +9,7 @@ public class Playlist implements Serializable {
 
     private static Playlist instance;
 
-    private ArrayList<Video> playlist;
+    private ArrayList<Video> playlist = new ArrayList<>();
 
     // Constructor
     private Playlist(ArrayList<Video> playlist) {
@@ -35,23 +35,29 @@ public class Playlist implements Serializable {
 
     // Add video to playlist
     public void addVideo(Video video) {
-        this.playlist.add(video);
+        if (playlist != null) {
+            playlist.add(video);
+        }
     }
 
     // Remove video from playlist
     public void removeVideo() {
-        if (playlist.size() != 0) {
-            this.playlist.remove(0);
+        if (playlist != null) {
+            if (playlist.size() != 0) {
+                this.playlist.remove(0);
+            }
         }
     }
 
     // Retrieve video from playlist and remove it
     public Video retrieveVideo() {
         Video nextVideo;
-        if (playlist.size() != 0) {
-            nextVideo = playlist.get(0);
-            removeVideo();
-            return nextVideo;
+        if (playlist != null) {
+            if (playlist.size() != 0) {
+                nextVideo = playlist.get(0);
+                removeVideo();
+                return nextVideo;
+            }
         }
         return null;
     }

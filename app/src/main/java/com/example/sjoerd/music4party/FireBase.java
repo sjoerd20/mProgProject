@@ -8,10 +8,12 @@
 package com.example.sjoerd.music4party;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.sjoerd.music4party.models.Group;
 import com.example.sjoerd.music4party.models.Playlist;
+import com.example.sjoerd.music4party.models.Video;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 // This class is a singleton
 public class FireBase {
@@ -38,6 +41,7 @@ public class FireBase {
         // Create database
         this.database = FirebaseDatabase.getInstance();
 
+
         // If creator, create database entry for thr group
         if (isCreator) {
 
@@ -46,11 +50,13 @@ public class FireBase {
             groupId = Integer.toString(loginCode);
             group = new Group(loginCode, groupId);
             groupRef.child(groupId).setValue(group);
+            groupRef.child(groupId).addValueEventListener(new OnGroupDataChangeListener());
 
             // Add new playlist to database for group (p stands for playlist)
             DatabaseReference playlistRef = database.getReference("p");
-            playlist = Playlist.getInstance(null);
+            playlist = Playlist.getInstance(new ArrayList<Video>());
             playlistRef.child(groupId).setValue(playlist);
+            playlistRef.child(groupId).addValueEventListener(new OnPlaylistDataChangeListener());
         }
 
         // If not creator check login code and return group
@@ -65,7 +71,7 @@ public class FireBase {
                         Group retrievedGroup = child.getValue(Group.class);
                         if (retrievedGroup.getLoginCode() == user_login) {
                             group = new Group(user_login, retrievedGroup.getGroupId());
-                            playlist = Playlist.getInstance(null);
+                            playlist = Playlist.getInstance(new ArrayList<Video>());
                             return;
                         }
                     }
@@ -87,6 +93,53 @@ public class FireBase {
             instance = new FireBase(isCreator, key);
         }
         return instance;
+    }
+
+    public void changePlaylist(Playlist playlist) {
+        try {
+            DatabaseReference playlistRef = database.getReference("p");
+            playlistRef.child(group.getGroupId()).setValue(playlist);
+        }
+        catch (Exception e) {
+            Log.e("Exception changing playlist", e.getMessage());
+        }
+    }
+
+    /*
+     * Add listeners for group data change
+     */
+    public class OnGroupDataChangeListener implements ValueEventListener {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+            Log.e("OnFireBaseDataChangeListener", "Failed");
+        }
+    }
+
+    /*
+     * Add listeners for playlist data change
+     */
+    public class OnPlaylistDataChangeListener implements ValueEventListener {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            ArrayList<Video> videos = new ArrayList<>();
+            if (dataSnapshot.getValue() == group.getGroupId()) {
+                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                    Video video = childSnapshot.getValue(Video.class);
+                    videos.add(video);
+                }
+            }
+            playlist = Playlist.getInstance(videos);
+            playlist.setPlaylist(videos);
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+            Log.e("OnFireBaseDataChangeListener", "Failed");
+        }
     }
 
     // Getters

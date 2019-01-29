@@ -42,10 +42,15 @@ public class GroupMemberHomeActivity extends AppCompatActivity {
         if (retrievedGroup == null) {
             retrievedGroup = (Group) intent.getSerializableExtra("group");
             retrievedPlaylist = (Playlist) intent.getSerializableExtra("playlist");
-            retrievedFireBase = FireBase.getInstance(false, retrievedGroup.getLoginCode());
 
             Toast.makeText(this, retrievedGroup.getGroupId(), Toast.LENGTH_LONG).show();
         }
+        retrievedFireBase = FireBase.getInstance(false, retrievedGroup.getLoginCode());
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
     /*
@@ -69,11 +74,6 @@ public class GroupMemberHomeActivity extends AppCompatActivity {
                         SettingsActivity.class);
                 intentSettings.putExtra("group", retrievedGroup);
                 startActivity(intentSettings);
-                return true;
-            case R.id.action_search:
-                Intent intentSearch = new Intent(GroupMemberHomeActivity.this,
-                        SearchActivity.class);
-                startActivity(intentSearch);
                 return true;
             default:
                 return super.onOptionsItemSelected(menuItem);

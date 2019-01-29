@@ -23,7 +23,6 @@
         </activity>
         <activity android:name=".activities.GroupCreatorHomeActivity" />
         <activity android:name=".activities.GroupMemberHomeActivity" />
-        <activity android:name=".activities.SearchActivity" />
         <activity android:name=".activities.SettingsActivity"></activity>
     </application>
 

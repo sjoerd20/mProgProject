@@ -59,10 +59,10 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
         if (retrievedGroup == null) {
             retrievedGroup = (Group) intent.getSerializableExtra("group");
             retrievedPlaylist = (Playlist) intent.getSerializableExtra("playlist");
-            retrievedFireBase = FireBase.getInstance(false, retrievedGroup.getLoginCode());
 
             Toast.makeText(this, retrievedGroup.getGroupId(), Toast.LENGTH_LONG).show();
         }
+        retrievedFireBase = FireBase.getInstance(false, retrievedGroup.getLoginCode());
 
         // Initiate youtubePlayerFragment
         youTubePlayerFragment = new YoutubePlayerFragment(this, getSupportFragmentManager(), retrievedPlaylist);
@@ -82,6 +82,11 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
         videoList.add(new Video("Pachelbell", " "));
         videoList.add(new Video("Hey brother", " "));
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
     /*
@@ -106,11 +111,6 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
                 intentSettings.putExtra("group", retrievedGroup);
                 startActivity(intentSettings);
                 return true;
-            case R.id.action_search:
-                Intent intentSearch = new Intent(GroupCreatorHomeActivity.this,
-                                                    SearchActivity.class);
-                startActivity(intentSearch);
-                return true;
             default:
                 return super.onOptionsItemSelected(menuItem);
         }
@@ -134,7 +134,12 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
     @Override
     public void gotVideos(ArrayList<Video> videos) {
         try {
-            youTubePlayerFragment.newVideo(videos.get(0).getVideoId());
+            // Update playlist
+            retrievedPlaylist.removeVideo();
+            retrievedPlaylist.addVideo(videos.get(0));
+
+            retrievedFireBase.changePlaylist(retrievedPlaylist);
+//            youTubePlayerFragment.newVideo(videos.get(0).getVideoId());
         }
         catch(IndexOutOfBoundsException e) {
             Toast.makeText(this, "No matching videos found", Toast.LENGTH_LONG).show();
