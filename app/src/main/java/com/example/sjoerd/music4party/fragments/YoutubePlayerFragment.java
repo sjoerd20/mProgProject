@@ -1,5 +1,5 @@
 /*
-  Contains the youtubeFragmentPlayer
+  Contains the youtubeFragmentPlaye for playing the youtube video
 
   @author      Sjoerd Terpstra
 
@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 
+import com.example.sjoerd.music4party.FireBase;
 import com.example.sjoerd.music4party.R;
 import com.example.sjoerd.music4party.models.Playlist;
 import com.example.sjoerd.music4party.models.Video;
@@ -18,34 +19,32 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.FormatFlagsConversionMismatchException;
 
 import static android.content.ContentValues.TAG;
 
 public class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListener {
 
     private static final String API_KEY = "AIzaSyB91qfzy3kS3ZjtK4YoJ7Wa78afJyY7OHQ ";
-    private Playlist playlist;
-    private static final String VIDEO_CODE = "FoCG-WNsZio";
-    private static final String VIDEO_CODE2 = "8ebRM6vSYXw";
 
-    private YouTubePlayerSupportFragment youTubePlayerSupportFragment;
-    private Activity activity;
-    private FragmentManager supportFragmentManager;
     private YouTubePlayer youTubePlayer;
+
+    private Playlist retrievedPlaylist;
+    private FireBase retrievedFireBase;
 
     /*
      * Constructor. Creates a YoutubePlayerSupportFragment to play the videos
      */
-    public YoutubePlayerFragment(Activity activity, FragmentManager supportFragmentManager, Playlist playlist) {
-        this.activity = activity;
-        this.supportFragmentManager = supportFragmentManager;
-        this.playlist = playlist;
-//        video_codes.add("FoCG-WNsZio");
-//        video_codes.add("8ebRM6vSYXw");
+    public YoutubePlayerFragment(Activity activity, FragmentManager supportFragmentManager,
+                                 Playlist playlist, FireBase fireBase) {
+        this.retrievedPlaylist = playlist;
+        this.retrievedFireBase = fireBase;
 
         // Initialize youtubePlayer
-        youTubePlayerSupportFragment = (YouTubePlayerSupportFragment) supportFragmentManager.
+        YouTubePlayerSupportFragment youTubePlayerSupportFragment = (YouTubePlayerSupportFragment)
+                                                                    supportFragmentManager.
                 findFragmentById(R.id.youtube_player_fragment);
         if (youTubePlayerSupportFragment == null) {
             return;
@@ -60,13 +59,15 @@ public class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListene
         if (!wasRestored) {
             this.youTubePlayer = youTubePlayer;
 
-            // Set player to default style
-            // CHROMELESS, DEFAULT, MINIMAL
+            // Set player to DEFAULT/MINIMAL style
             youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
-            youTubePlayer.setShowFullscreenButton(false);
+            youTubePlayer.setShowFullscreenButton(true);
 
-            // Cue video from playlist
-            youTubePlayer.loadVideo(VIDEO_CODE);
+            // Cue first video from playlist
+            Video firstVideo = retrievedPlaylist.retrieveVideo();
+            if (firstVideo != null) {
+                youTubePlayer.loadVideo(firstVideo.getVideoId());
+            }
 
             // add listeners
             youTubePlayer.setPlaybackEventListener(new VideoPlaybackListener());
@@ -104,11 +105,12 @@ public class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListene
         @Override
         public void onVideoEnded() {
 
-            // Cue next  from playlist
-            Video nextVideo = playlist.retrieveVideo();
+            // Cue next video from playlist
+            Video nextVideo = retrievedPlaylist.retrieveVideo();
             if (nextVideo != null) {
                 youTubePlayer.loadVideo(nextVideo.getVideoId());
             }
+            retrievedFireBase.changePlaylist(retrievedPlaylist);
         }
 
         @Override

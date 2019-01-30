@@ -15,6 +15,7 @@ public class Group implements Serializable {
     private String groupId;
     private ArrayList<String> users = new ArrayList<>();
 
+    // Empty constructor needed for Firebase
     public Group() {
     }
 
@@ -23,6 +24,7 @@ public class Group implements Serializable {
         this.groupId = groupId;
     }
 
+    // Getters and setters, needed for Firebase
     public int getLoginCode() {
         return loginCode;
     }

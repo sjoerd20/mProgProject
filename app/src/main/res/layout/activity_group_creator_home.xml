@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".activities.GroupCreatorHomeActivity">
 
-    <android.widget.Toolbar
+    <android.support.v7.widget.Toolbar
         android:id="@+id/loginToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -88,10 +88,8 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!--  Youtube Player Fragment  -->
-
     <ListView
-        android:id="@+id/_listViewVideosResult"
+        android:id="@+id/_listViewVideos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="6" />

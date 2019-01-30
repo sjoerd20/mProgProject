@@ -74,4 +74,14 @@ public class SettingsActivity extends AppCompatActivity {
         inflater.inflate(R.menu.settings_menu, menu);
         return true;
     }
+
+    /*
+     * Stop current session and return to login screen
+     */
+    public void onDeleteClicked(View view) {
+        Intent intent = new Intent(SettingsActivity.this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
 }

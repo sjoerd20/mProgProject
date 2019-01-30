@@ -24,9 +24,10 @@ import com.example.sjoerd.music4party.models.Group;
 import com.example.sjoerd.music4party.R;
 import com.example.sjoerd.music4party.models.Playlist;
 
+import java.util.Random;
+
 public class LoginActivity extends AppCompatActivity {
 
-    private int loginCode;
     private Group group;
     private Playlist playlist;
     private Context context;
@@ -39,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
 
         this.context = getApplicationContext();
         // Set toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.loginToolbar);
+        Toolbar toolbar = findViewById(R.id.loginToolbar);
         setSupportActionBar(toolbar);
 
         // Add listener to buttons
@@ -61,20 +62,19 @@ public class LoginActivity extends AppCompatActivity {
             EditText loginCodeText = findViewById(R.id.loginCodeText);
             String loginText = loginCodeText.getText().toString();
             if (!loginText.equals("")) {
-                loginCode = Integer.parseInt(loginCodeText.getText().toString());
-
-                Toast.makeText(context, " " + loginCode, Toast.LENGTH_LONG).show();
+                int loginCode = Integer.parseInt(loginCodeText.getText().toString());
 
                 // Create firebase, group & playlist instances
                 FireBase fireBase = FireBase.getInstance(false, loginCode);
                 group = fireBase.getGroup();
-                playlist = fireBase.getPlaylist();
 
                 // Check if login is successful. If group is null, login was not successful
                 if (group == null) {
-                    Toast.makeText(context, "Login not successful, try again!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Login not successful, try again!",
+                                   Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    playlist = fireBase.getPlaylist();
 
                     // Start the GroupMemberHomeActivity
                     Intent intent = new Intent(LoginActivity.this,
@@ -87,7 +87,8 @@ public class LoginActivity extends AppCompatActivity {
 
             // If nothing is entered, prompt the user to try again
             else {
-                Toast.makeText(context, "Input required, try again!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Input required, try again!",
+                               Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -99,7 +100,11 @@ public class LoginActivity extends AppCompatActivity {
     private class LoginCreateButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            FireBase fireBase = FireBase.getInstance(true, 1234);
+
+            // Generate random login key between 1000 and 9999
+            Random random = new Random();
+            int key = random.nextInt(9000) + 1000;
+            FireBase fireBase = FireBase.getInstance(true, key);
             group = fireBase.getGroup();
             playlist = fireBase.getPlaylist();
 

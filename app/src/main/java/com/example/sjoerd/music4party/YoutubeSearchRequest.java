@@ -1,3 +1,10 @@
+/*
+  Youtube search request. Uses a volley request to obtain a list of videos via the Youtube Data API
+
+  @author      Sjoerd Terpstra
+
+ */
+
 package com.example.sjoerd.music4party;
 
 import android.content.Context;
@@ -25,12 +32,11 @@ public class YoutubeSearchRequest implements Response.Listener<JSONObject>, Resp
 
     private String url1 = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&" +
             "maxResults=" + MAX_RESULTS + "&q=";
-    private String url2 = "&type=video&fields=items(id%2FvideoId%2Csnippet(thumbnails%2Fdefault%2Ctitle))&key=";
-//    private String url_1 = "https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=";
-//    private String url_2 = "&type=video&key=";
+    private String url2 = "&type=video&" +
+                          "fields=items(id%2FvideoId%2Csnippet(thumbnails%2Fdefault%2Ctitle))&key=";
 
-    private Context context;
     private ArrayList<Video> videos = new ArrayList<>();
+    private Context context;
     Callback activity;
 
     public interface Callback {
@@ -86,7 +92,8 @@ public class YoutubeSearchRequest implements Response.Listener<JSONObject>, Resp
         String url = url1 + searchText + url2 + API_KEY;
 
         try {
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null, this, this);
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null,
+                                                                this, this);
             queue.add(jsonObjectRequest);
         }
         catch(Exception e) {

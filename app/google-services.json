@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "545420837173-tmsu958buq8g9034q22qgeefhalqqok2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sjoerd.music4party",
+            "certificate_hash": "3c4b066bbaa27df8ff4ec5f983ba5b6c48d2c99e"
+          }
+        },
+        {
           "client_id": "545420837173-7mhr2rn84t6aigqvvp9nsjlsdovotj1a.apps.googleusercontent.com",
           "client_type": 3
         }

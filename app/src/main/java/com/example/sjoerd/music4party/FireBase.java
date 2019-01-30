@@ -1,5 +1,5 @@
 /*
-  This file handles the FireBase realtime database
+  This file handles the interaction with the FireBase realtime database
 
   @author      Sjoerd Terpstra
 
@@ -61,8 +61,8 @@ public class FireBase {
 
         // If not creator check login code and return group
         else {
-            // TODO check loginCode and join group
             final DatabaseReference groupRef = database.getReference("g");
+            final DatabaseReference playlistRef = database.getReference("p");
             final int user_login = loginCode;
             groupRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -84,6 +84,27 @@ public class FireBase {
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                 }
             });
+            if (group == null) {
+                return;
+            }
+            playlistRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    ArrayList<Video> videos = new ArrayList<>();
+                    if (dataSnapshot.getValue() == group.getGroupId()) {
+                        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                            Video video = childSnapshot.getValue(Video.class);
+                            videos.add(video);
+                        }
+                    }
+                    playlist = Playlist.getInstance(videos);
+                    playlist.setPlaylist(videos);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
         }
     }
 
@@ -95,6 +116,9 @@ public class FireBase {
         return instance;
     }
 
+    /*
+     * Push change of playlist to Firebase
+     */
     public void changePlaylist(Playlist playlist) {
         try {
             DatabaseReference playlistRef = database.getReference("p");

@@ -1,6 +1,11 @@
-package com.example.sjoerd.music4party.models;
+/*
+  Represents a single playlist
 
-import com.example.sjoerd.music4party.FireBase;
+  @author      Sjoerd Terpstra
+
+ */
+
+package com.example.sjoerd.music4party.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,7 +14,7 @@ public class Playlist implements Serializable {
 
     private static Playlist instance;
 
-    private ArrayList<Video> playlist = new ArrayList<>();
+    private ArrayList<Video> playlist;
 
     // Constructor
     private Playlist(ArrayList<Video> playlist) {
@@ -24,7 +29,7 @@ public class Playlist implements Serializable {
         return instance;
     }
 
-    // Getters and setters
+    // // Getters and setters
     public ArrayList<Video> getPlaylist() {
         return playlist;
     }

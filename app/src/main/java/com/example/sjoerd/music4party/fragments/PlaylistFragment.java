@@ -1,6 +1,14 @@
+/*
+  Playlist fragment for showing the current playlist
+
+  @author      Sjoerd Terpstra
+
+ */
+
 package com.example.sjoerd.music4party.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +19,7 @@ import com.example.sjoerd.music4party.R;
 public class PlaylistFragment extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_playlist, container, false);
     }

@@ -1,3 +1,10 @@
+/*
+  Adapter for representing videos in a listview
+
+  @author      Sjoerd Terpstra
+
+ */
+
 package com.example.sjoerd.music4party;
 
 import android.content.Context;
@@ -14,7 +21,6 @@ import com.example.sjoerd.music4party.models.Video;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class VideoAdapter extends ArrayAdapter<Video> {
 
@@ -30,7 +36,8 @@ public class VideoAdapter extends ArrayAdapter<Video> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.video_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.video_item, parent,
+                                            false);
         }
 
         // Get current video
