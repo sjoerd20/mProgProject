@@ -72,3 +72,8 @@ Hackathon
 
 # Decisions
 - Created new model Playlist to hold the videos in the playlist
+
+# day 18 
+
+### Decisions
+- Changed Recyclerview for search results to ListView
