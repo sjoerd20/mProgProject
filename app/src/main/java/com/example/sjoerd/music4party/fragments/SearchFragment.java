@@ -66,14 +66,4 @@ public class SearchFragment extends Fragment {
 
 //        Toast.makeText(activity, "onSearchButtonClicked successful", Toast.LENGTH_LONG).show();
     }
-
-    public void getSearchResults(ArrayList<Video> videosList) {
-
-        // Show the search results in the recyclerview
-//        videoAdapter = new VideoRecyclerAdapter(this.getActivity().getBaseContext(), videosList);
-//        videoRecyclerView.setAdapter(videoAdapter);
-//        videoAdapter = new VideoRecyclerAdapter(getContext(), videosList);
-//        videoRecyclerView.setLayoutManager(horizontalLayoutManager);
-//        videoRecyclerView.setAdapter(videoAdapter);
-    }
 }

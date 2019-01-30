@@ -57,13 +57,6 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
     private VideoAdapter videoAdapter;
     private ListView listViewResults;
 
-//    OnFragmentInteractionListener fragmentInteractionListener;
-//
-//    // Callback for communicating with fragment
-//    public interface OnFragmentInteractionListener {
-//        void onSearchResult(ArrayList<Video> videos);
-//    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,11 +101,16 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
     }
 
     public void onPlaylistButtonClicked(View view) {
+
+        // Get playlist fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragmentLayout, playlistFragment);
         fragmentTransaction.commit();
-//        Toast.makeText(this, "onPlaylistButtonClicked successful", Toast.LENGTH_LONG).show();
+
+        // Show current playlist
+        videoAdapter = new VideoAdapter(this, R.layout.video_item, retrievedPlaylist.getPlaylist());
+        listViewResults.setAdapter(videoAdapter);
     }
 
     public void onSearchButtonClicked(View view) {
@@ -120,7 +118,6 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragmentLayout, searchFragment);
         fragmentTransaction.commit();
-//        Toast.makeText(this, "onSearchButtonClicked successful", Toast.LENGTH_LONG).show();
     }
 
     /*
@@ -163,22 +160,13 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
     }
 
     /*
-     * If successful found a video, play it
+     * If successful found videos, display it in an adapter
      */
     @Override
     public void gotVideos(ArrayList<Video> videos) {
         try {
-
-            // Show result in SearchFragment
-            searchFragment.getSearchResults(videos);
-
             videoAdapter = new VideoAdapter(this, R.layout.video_item, videos);
             listViewResults.setAdapter(videoAdapter);
-
-            // Update playlist
-            retrievedPlaylist.removeVideo();
-            retrievedPlaylist.addVideo(videos.get(0));
-            retrievedFireBase.changePlaylist(retrievedPlaylist);
         }
         catch(IndexOutOfBoundsException e) {
             Toast.makeText(this, "No matching videos found", Toast.LENGTH_LONG).show();
@@ -191,13 +179,17 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
+    /*
+     * Store the selected video in the playlist
+     */
     private class OnVideoClicked implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             // Update playlist
             Video clickedVideo = (Video) adapterView.getItemAtPosition(i);
             listViewResults.setAdapter(null); // Empty adapter (remove results)
-            retrievedPlaylist.removeVideo();
+
+            // Update playlist
             retrievedPlaylist.addVideo(clickedVideo);
             retrievedFireBase.changePlaylist(retrievedPlaylist);
         }

@@ -7,9 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sjoerd.music4party.models.Video;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,9 +36,13 @@ public class VideoAdapter extends ArrayAdapter<Video> {
         // Get current video
         Video video = videos.get(position);
 
-        // Set video title
+        // Set video title and thumbnail
         TextView videoTitle = convertView.findViewById(R.id.videoTitle);
         videoTitle.setText(video.getVideoTitle());
+
+        // draw image with picasso
+        ImageView thumbnail = convertView.findViewById(R.id.thumbnailView);
+        Picasso.with(getContext()).load(video.getThumbnailURL()).into(thumbnail);
 
         return convertView;
     }
