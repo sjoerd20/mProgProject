@@ -9,6 +9,7 @@
 package com.example.sjoerd.music4party.activities;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -28,7 +29,7 @@ import com.example.sjoerd.music4party.models.Video;
 
 import java.util.ArrayList;
 
-public class GroupMemberHomeActivity extends AppCompatActivity implements YoutubeSearchRequest.Callback {
+public class GroupMemberHomeActivity extends AppCompatActivity {
 
     private Group retrievedGroup;
     private Playlist retrievedPlaylist;
@@ -38,6 +39,7 @@ public class GroupMemberHomeActivity extends AppCompatActivity implements Youtub
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_member_home);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         // Set toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.loginToolbar);
@@ -86,37 +88,37 @@ public class GroupMemberHomeActivity extends AppCompatActivity implements Youtub
         }
     }
 
-    /*
-     * Search videos with the Youtube Data API using a keyword input from the user
-     */
-    public void onSearchClicked(View view) {
-        EditText searchTextView = findViewById(R.id.creatorSearchText);
-        String searchText = searchTextView.getText().toString();
-        if (!searchText.equals("")) {
-            YoutubeSearchRequest youtubeSearchRequest = new YoutubeSearchRequest(this);
-            youtubeSearchRequest.getVideos(this, searchText);
-        }
-    }
-
-    /*
-     * If successful found a video, play it
-     */
-    @Override
-    public void gotVideos(ArrayList<Video> videos) {
-        try {
-            // Update playlist
-            retrievedPlaylist.removeVideo();
-            retrievedPlaylist.addVideo(videos.get(0));
-            retrievedFireBase.changePlaylist(retrievedPlaylist);
-        }
-        catch(IndexOutOfBoundsException e) {
-            Toast.makeText(this, "No matching videos found", Toast.LENGTH_LONG).show();
-        }
-        Toast.makeText(this, "done!", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void gotVideosError(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-    }
+//    /*
+//     * Search videos with the Youtube Data API using a keyword input from the user
+//     */
+//    public void onSearchClicked(View view) {
+//        EditText searchTextView = findViewById(R.id.creatorSearchText);
+//        String searchText = searchTextView.getText().toString();
+//        if (!searchText.equals("")) {
+//            YoutubeSearchRequest youtubeSearchRequest = new YoutubeSearchRequest(this);
+//            youtubeSearchRequest.getVideos(this, searchText);
+//        }
+//    }
+//
+//    /*
+//     * If successful found a video, play it
+//     */
+//    @Override
+//    public void gotVideos(ArrayList<Video> videos) {
+//        try {
+//            // Update playlist
+//            retrievedPlaylist.removeVideo();
+//            retrievedPlaylist.addVideo(videos.get(0));
+//            retrievedFireBase.changePlaylist(retrievedPlaylist);
+//        }
+//        catch(IndexOutOfBoundsException e) {
+//            Toast.makeText(this, "No matching videos found", Toast.LENGTH_LONG).show();
+//        }
+//        Toast.makeText(this, "done!", Toast.LENGTH_LONG).show();
+//    }
+//
+//    @Override
+//    public void gotVideosError(String message) {
+//        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+//    }
 }

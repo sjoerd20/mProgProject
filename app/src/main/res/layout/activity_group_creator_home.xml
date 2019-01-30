@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".activities.GroupCreatorHomeActivity">
 
-    <android.support.v7.widget.Toolbar
+    <android.widget.Toolbar
         android:id="@+id/loginToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -16,52 +16,60 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="345dp"
+        android:layout_weight="5"
+        android:orientation="vertical">
+
+        <fragment
+            android:id="@+id/youtube_player_fragment"
+            android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/loginToolbar"
+            app:layout_constraintVertical_bias="0.25" />
+    </LinearLayout>
+
     <!--  Youtube Player Fragment  -->
-    <fragment
-        android:id="@+id/youtube_player_fragment"
-        android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_weight="20"
-        app:layout_constraintTop_toBottomOf="@+id/loginToolbar"
-        app:layout_constraintVertical_bias="0.25" />
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/buttonPlaylistFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onPlaylistButtonClicked"
+            android:text="Playlist" />
+
+        <Button
+            android:id="@+id/buttonSearchFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onSearchButtonClicked"
+            android:text="Search" />
+
+        <FrameLayout
+            android:id="@+id/fragmentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </FrameLayout>
+
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/_creator_recycler_video"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="24" />
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="23.5">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/creatorSearchText"
-            android:layout_width="347dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="search" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="148dp"
-            android:layout_height="58dp"
-            android:layout_weight="1"
-            android:onClick="onSearchClicked"
-            android:text="Search" />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/_creator_search_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="20" />
+        android:layout_weight="50" />
 
 </LinearLayout>

@@ -9,22 +9,28 @@
 package com.example.sjoerd.music4party.activities;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.sjoerd.music4party.FireBase;
 import com.example.sjoerd.music4party.VideoRecyclerAdapter;
 import com.example.sjoerd.music4party.YoutubeSearchRequest;
+import com.example.sjoerd.music4party.fragments.PlaylistFragment;
+import com.example.sjoerd.music4party.fragments.SearchFragment;
 import com.example.sjoerd.music4party.models.Group;
 import com.example.sjoerd.music4party.R;
 import com.example.sjoerd.music4party.fragments.YoutubePlayerFragment;
@@ -49,10 +55,17 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_creator_home);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        // Setup fragmentmanager
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragmentLayout, new SearchFragment());
+        fragmentTransaction.commit();
 
         // Set toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.loginToolbar);
-        setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.loginToolbar);
+        setActionBar(toolbar);
 
         // Receive intent
         Intent intent = getIntent();
@@ -89,6 +102,22 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
         moveTaskToBack(true);
     }
 
+    public void onPlaylistButtonClicked(View view) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentLayout, new PlaylistFragment());
+        fragmentTransaction.commit();
+//        Toast.makeText(this, "onPlaylistButtonClicked successful", Toast.LENGTH_LONG).show();
+    }
+
+    public void onSearchButtonClicked(View view) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentLayout, new SearchFragment());
+        fragmentTransaction.commit();
+//        Toast.makeText(this, "onSearchButtonClicked successful", Toast.LENGTH_LONG).show();
+    }
+
     /*
      * Inflate options in toolbar
      */
@@ -120,7 +149,7 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
      * Search videos with the Youtube Data API using a keyword input from the user
      */
     public void onSearchClicked(View view) {
-        EditText searchTextView = findViewById(R.id.creatorSearchText);
+        EditText searchTextView = findViewById(R.id.searchText);
         String searchText = searchTextView.getText().toString();
         if (!searchText.equals("")) {
             YoutubeSearchRequest youtubeSearchRequest = new YoutubeSearchRequest(this);
@@ -149,4 +178,5 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
     public void gotVideosError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
+
 }
