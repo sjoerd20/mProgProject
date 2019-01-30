@@ -10,6 +10,7 @@ package com.example.sjoerd.music4party.activities;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -18,6 +19,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -46,16 +48,26 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
     private YoutubePlayerFragment youTubePlayerFragment;
     private Group retrievedGroup;
     private FireBase retrievedFireBase;
-    private List<Video> videoList = new ArrayList<>();
     private Playlist retrievedPlaylist;
-    private RecyclerView videoRecyclerView;
-    private VideoRecyclerAdapter videoAdapter;
+    private SearchFragment searchFragment;
+    private PlaylistFragment playlistFragment;
+
+//    OnFragmentInteractionListener fragmentInteractionListener;
+//
+//    // Callback for communicating with fragment
+//    public interface OnFragmentInteractionListener {
+//        void onSearchResult(ArrayList<Video> videos);
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_creator_home);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        // Initialize fragments
+        searchFragment = new SearchFragment();
+        playlistFragment = new PlaylistFragment();
 
         // Setup fragmentmanager
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -79,22 +91,6 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
 
         // Initiate youtubePlayerFragment
         youTubePlayerFragment = new YoutubePlayerFragment(this, getSupportFragmentManager(), retrievedPlaylist);
-
-        // Create horizontal recyclerview for the videos currently in the playlist
-        videoRecyclerView = findViewById(R.id._creator_recycler_video);
-        videoRecyclerView.addItemDecoration(new DividerItemDecoration(GroupCreatorHomeActivity.this, LinearLayoutManager.HORIZONTAL));
-        videoAdapter = new VideoRecyclerAdapter(getApplicationContext(), videoList);
-        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(GroupCreatorHomeActivity.this, LinearLayoutManager.HORIZONTAL, false);
-        videoRecyclerView.setLayoutManager(horizontalLayoutManager);
-        videoRecyclerView.setAdapter(videoAdapter);
-
-        videoList.add(new Video("Einaudi", " "));
-        videoList.add(new Video("Jacob's piano", " "));
-        videoList.add(new Video("Queen", " "));
-        videoList.add(new Video("Bohemian Rhapsody", " "));
-        videoList.add(new Video("Pachelbell", " "));
-        videoList.add(new Video("Hey brother", " "));
-
     }
 
     @Override
@@ -105,7 +101,7 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
     public void onPlaylistButtonClicked(View view) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentLayout, new PlaylistFragment());
+        fragmentTransaction.replace(R.id.fragmentLayout, playlistFragment);
         fragmentTransaction.commit();
 //        Toast.makeText(this, "onPlaylistButtonClicked successful", Toast.LENGTH_LONG).show();
     }
@@ -113,7 +109,7 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
     public void onSearchButtonClicked(View view) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentLayout, new SearchFragment());
+        fragmentTransaction.replace(R.id.fragmentLayout, searchFragment);
         fragmentTransaction.commit();
 //        Toast.makeText(this, "onSearchButtonClicked successful", Toast.LENGTH_LONG).show();
     }
@@ -163,6 +159,10 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
     @Override
     public void gotVideos(ArrayList<Video> videos) {
         try {
+
+            // Show result in SearchFragment
+            searchFragment.getSearchResults(videos);
+
             // Update playlist
             retrievedPlaylist.removeVideo();
             retrievedPlaylist.addVideo(videos.get(0));

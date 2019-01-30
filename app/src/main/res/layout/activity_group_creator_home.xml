@@ -19,14 +19,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="345dp"
-        android:layout_weight="5"
+        android:layout_weight="2"
         android:orientation="vertical">
 
         <fragment
             android:id="@+id/youtube_player_fragment"
             android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -40,7 +40,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3"
+        android:layout_weight="4"
+        android:clickable="false"
         android:orientation="vertical">
 
         <Button
@@ -59,17 +60,12 @@
 
         <FrameLayout
             android:id="@+id/fragmentLayout"
+            android:clickable="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
         </FrameLayout>
 
     </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/_creator_recycler_video"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="50" />
 
 </LinearLayout>
