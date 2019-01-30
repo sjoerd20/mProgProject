@@ -24,11 +24,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.sjoerd.music4party.FireBase;
+import com.example.sjoerd.music4party.VideoAdapter;
 import com.example.sjoerd.music4party.VideoRecyclerAdapter;
 import com.example.sjoerd.music4party.YoutubeSearchRequest;
 import com.example.sjoerd.music4party.fragments.PlaylistFragment;
@@ -51,6 +54,8 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
     private Playlist retrievedPlaylist;
     private SearchFragment searchFragment;
     private PlaylistFragment playlistFragment;
+    private VideoAdapter videoAdapter;
+    private ListView listViewResults;
 
 //    OnFragmentInteractionListener fragmentInteractionListener;
 //
@@ -64,6 +69,10 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_creator_home);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        // Add listener to listview of video results
+        listViewResults = findViewById(R.id._listViewVideosResult);
+        listViewResults.setOnItemClickListener(new OnVideoClicked());
 
         // Initialize fragments
         searchFragment = new SearchFragment();
@@ -163,6 +172,9 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
             // Show result in SearchFragment
             searchFragment.getSearchResults(videos);
 
+            videoAdapter = new VideoAdapter(this, R.layout.video_item, videos);
+            listViewResults.setAdapter(videoAdapter);
+
             // Update playlist
             retrievedPlaylist.removeVideo();
             retrievedPlaylist.addVideo(videos.get(0));
@@ -179,4 +191,15 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
+    private class OnVideoClicked implements AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            // Update playlist
+            Video clickedVideo = (Video) adapterView.getItemAtPosition(i);
+            listViewResults.setAdapter(null); // Empty adapter (remove results)
+            retrievedPlaylist.removeVideo();
+            retrievedPlaylist.addVideo(clickedVideo);
+            retrievedFireBase.changePlaylist(retrievedPlaylist);
+        }
+    }
 }

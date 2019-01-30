@@ -25,7 +25,7 @@ public class YoutubeSearchRequest implements Response.Listener<JSONObject>, Resp
 
     private String url1 = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&" +
             "maxResults=" + MAX_RESULTS + "&q=";
-    private String url2 = "&type=video&fields=items(id%2FvideoId%2Csnippet%2Fthumbnails%2Fdefault)&key=";
+    private String url2 = "&type=video&fields=items(id%2FvideoId%2Csnippet(thumbnails%2Fdefault%2Ctitle))&key=";
 //    private String url_1 = "https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=";
 //    private String url_2 = "&type=video&key=";
 
@@ -62,10 +62,12 @@ public class YoutubeSearchRequest implements Response.Listener<JSONObject>, Resp
                 String videoId = id.getString("videoId");
 
                 // Get video thumbnail
-                JSONObject thumbnails = videoObject.getJSONObject("snippet").getJSONObject("thumbnails").getJSONObject("default");
+                JSONObject snippet = videoObject.getJSONObject("snippet");
+                String videoTitle = snippet.getString("title");
+                JSONObject thumbnails = snippet.getJSONObject("thumbnails").getJSONObject("default");
                 String thumbnailURL = thumbnails.getString("url");
 
-                Video video = new Video("Title", videoId, thumbnailURL);
+                Video video = new Video(videoTitle, videoId, thumbnailURL);
                 videos.add(video);
             }
 

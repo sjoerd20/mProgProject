@@ -15,10 +15,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.sjoerd.music4party.FireBase;
 import com.example.sjoerd.music4party.R;
+import com.example.sjoerd.music4party.VideoAdapter;
 import com.example.sjoerd.music4party.VideoRecyclerAdapter;
 import com.example.sjoerd.music4party.YoutubeSearchRequest;
 import com.example.sjoerd.music4party.activities.GroupCreatorHomeActivity;
@@ -38,9 +40,7 @@ public class SearchFragment extends Fragment {
     private Playlist retrievedPlaylist;
     private FireBase retrievedFireBase;
 
-    private RecyclerView videoRecyclerView;
-    private VideoRecyclerAdapter videoAdapter;
-    private LinearLayoutManager horizontalLayoutManager;
+    private VideoAdapter videoAdapter;
     private ArrayList<Video> videos;
     private View fragmentView;
 
@@ -51,27 +51,29 @@ public class SearchFragment extends Fragment {
         retrievedPlaylist = Playlist.getInstance(null);
         retrievedFireBase = FireBase.getInstance(false, 0);
 
-        horizontalLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-
         fragmentView = inflater.inflate(R.layout.fragment_search, container, false);
 
+        // Create horizontal recyclerview for showing the found videos
+//        horizontalLayoutManager = new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false);
+//        videoRecyclerView = fragmentView.findViewById(R.id._creator_recycler_video_results);
+//        videoRecyclerView.setLayoutManager(horizontalLayoutManager);
+//        videoRecyclerView.addItemDecoration(new DividerItemDecoration(activity, LinearLayoutManager.HORIZONTAL));
         return fragmentView;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
 
-        // Create horizontal recyclerview for the videos currently in the playlist
-        videoRecyclerView = getView().findViewById(R.id._creator_recycler_video_results);
-        videoRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.HORIZONTAL));
-        videoAdapter = new VideoRecyclerAdapter(getContext(), retrievedPlaylist.getPlaylist());
-        videoRecyclerView.setLayoutManager(horizontalLayoutManager);
-        videoRecyclerView.setAdapter(videoAdapter);
-
 //        Toast.makeText(activity, "onSearchButtonClicked successful", Toast.LENGTH_LONG).show();
     }
 
     public void getSearchResults(ArrayList<Video> videosList) {
 
+        // Show the search results in the recyclerview
+//        videoAdapter = new VideoRecyclerAdapter(this.getActivity().getBaseContext(), videosList);
+//        videoRecyclerView.setAdapter(videoAdapter);
+//        videoAdapter = new VideoRecyclerAdapter(getContext(), videosList);
+//        videoRecyclerView.setLayoutManager(horizontalLayoutManager);
+//        videoRecyclerView.setAdapter(videoAdapter);
     }
 }
