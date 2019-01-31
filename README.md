@@ -22,15 +22,6 @@ The solution is to make an app that contains a playlist shared with multiple peo
 ### Login screen
 ![Login screen](/doc/Login_screen.jpg)
 
-### Home screen
-![Home screen](/doc/Group_leader_screen.jpg)
-
-### Search screen
-![Search screen](/doc/Search_screen.jpg)
-
-### Settings screen
-![Settings screen](/doc/Settings_screen.jpg)
-
 ## License
 For the license see [License](LICENSE)
 
