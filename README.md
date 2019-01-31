@@ -39,6 +39,9 @@ The solution is to make an app that contains a playlist shared with multiple peo
 ## Copyright
 For the license see [License](LICENSE). 
 
+## Additional info
+Due to safety, the API key present in the versions on Github is no longer active. To fully use the app, an API key for the Youtube Data API has to be generated via ![Google Console](https://console.cloud.google.com/apis/dashboard).
+
 ## Prerequisites
 ### data sources
 The music used for this app originates from the Youtube app. The user has to have a updated version of the Youtube app on their phone. To establish the connection between the Youtube player and this app, the [Youtube API](https://www.youtube.com/yt/dev/api-resources/) is used.
