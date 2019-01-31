@@ -28,15 +28,15 @@ The solution is to make an app that contains a playlist shared with multiple peo
 <img src="/doc/Settings.JPG" alt="drawing" height="300"/>
 </p>
 
-## License
-For the license see [License](LICENSE)
+## Copyright
+For the license see [License](LICENSE). 
 
 ## Prerequisites
 ### data sources
 The music used for this app originates from the Youtube app. The user has to have a updated version of the Youtube app on their phone. To establish the connection between the Youtube player and this app, the [Youtube API](https://www.youtube.com/yt/dev/api-resources/) is used.
 	
 ### external components
-For the communication between the different connected devices, [firebase](https://firebase.google.com/) is used. This is the place where the playlist, the users and the up- and downvotes are stored.
+For the communication between the different connected devices, [firebase](https://firebase.google.com/) is used. This is the place where the playlist, the users and the up- and downvotes are stored. The [Youtube API](https://www.youtube.com/yt/dev/api-resources/) is also used for providing the youtube player itself. The user is required to have an update version of the Youtube app installed.
 	
 ### review of similar apps
 There are many apps that use the following concept: have a group of friends and create a shared playlist. Spotify, for example, has such features. Each person can then play that playlist independently. But the market lacks an app that creates and plays a playlist simultaniously with multiple people, whereby the music is just played from one of the connected devices.
