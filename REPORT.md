@@ -111,33 +111,23 @@ Each group has a database entry under "g" with their logincode and a database en
 # Challenges/changes
 The next challenges arised and changes were made.
 
-## YoutubePlayerFragment
+### YoutubePlayerFragment
 Changed from YoutubePlayerView to YoutubeFragmentPlayer. The latter is recommended to use instead of the YoutubePlayerView, mainly because it is better preserved if state changes happens (like going to different activity, closing and reopening app etc.). At first there were problems implementing the youtube player, because the video kept pausing. This was solved by increasing the size of the player. The player has to be at least 110dp by 220dp, otherwise it doesn't work.
 
-## Toolbar
+### Toolbar
 Chosen to use a Toolbar for navigation through different activities. First implementing the toolbar with a BaseActivity was tried, but eventually the toolbar was implemented in each activity seperately instead through a BaseActivit.
 
-## FireBase
-- Decided to make a singleton of the FireBase class. This make it easier to use the class through multiple activities, while ensuring there is always maximal one instance of the FireBase class
+### FireBase
+Decided to make a singleton of the FireBase class. This make it easier to use the class through multiple activities, while ensuring there is always maximal one instance of the FireBase class
 
-## Models
+### Models
 - Added a Group class to hold all necessary info about the group a user is in: loginCode (int), groupId (String of loginCode)
 - Added a Video class to hold info about each video: videoTitle (String), videoId (String), thumbnailURL
 
-## Video list displaying
-- In first instance changed the display of videos in the search results and playlist from a listview to a recyclerview to make it possible to use a horizontal display. Later changed back to a listview because a vertical display of the videos fitted better on the screen.
+### Video list displaying
+In first instance changed the display of videos in the search results and playlist from a listview to a recyclerview to make it possible to use a horizontal display. Later changed back to a listview because a vertical display of the videos fitted better on the screen.
 
-### Decisions
-- The search function is now placed in the same activity as the youtube player to keep the youtube videos playing while searching for new videos
+### Youtube search
+First the search function was located in a separate activity: SearchActivity. Decided to locate the search function in the Home activities. This made it easily possible to let the youtube video keep playing while searching for new videos. Finally decided to move the search function in a fragment, so the user can choose if he/she wants to see the current playlist or wants to search for a video.  
 
-### Decisions
-- Doing the youtube search through a volley request with a URL instead of using the youtube builder
-
-### Decisions
-- Created new model Playlist to hold the videos in the playlist
-
-### Decisions
-- Search and playlist in home screen using fragments
-
-### Decisions
-- Changed Recyclerview for search results to ListView
+The implementation for the search function was first done by using code provided by [Google Developers](https://developers.google.com/youtube/v3/docs/search/list#usage). However, this didn't work due to an unknown error. In the current implementation a volley request is used via a GET request with a url. This works exactly as needed.
