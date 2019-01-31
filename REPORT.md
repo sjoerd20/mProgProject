@@ -1,7 +1,7 @@
 # Music4Party
 
-Author: Sjoerd Terpstra, 11251980
-Course: Programmeerproject, minor Programmeren, UvA  
+Author: Sjoerd Terpstra, 11251980  
+Course: Programmeerproject, minor Programmeren, UvA    
 Datum: 31-1-2019  
   
 ### Short description
