@@ -15,22 +15,36 @@ The solution is to make an app that contains a playlist shared with multiple peo
 	- Play and pause the current song
 	- View the next songs in the playlist
 	- Search for new numbers and add them to the queue
-	- Settings screen
+- Settings screen
 	- View group login code
 	- Terminate current session
 
-### Login screen
-![Login screen](/doc/Login_screen.jpg)
+### Screenshots
+<p float="center">
+	<img title="Login screen" src="/doc/Login.jpg" alt="drawing" height="300"/>
+	<em>Login screen</em>
+	<img title="Home screen group creator" src="/doc/CreatorHome.jpg" alt="drawing" height="300"/>
+	<em>Home screen group creator</em>
+	<img title="Home screen playlist" src="/doc/CreatorPlaylist.JPG" alt="drawing" height="300"/>
+	<em>Home screen playlist</em>
+	<img title="Home screen group member" src="/doc/HomeMember.JPG" alt="drawing" height="300"/>
+	<em>Home screen group member</em>
+	<img title="Settings screen" src="/doc/Settings.JPG" alt="drawing" height="300"/>
+	<em>Settings screen</em>
+</p>
 
-## License
-For the license see [License](LICENSE)
+### Product video
+[Product video](https://youtu.be/a-um6Nw5oYA)
+
+## Copyright
+For the license see [License](LICENSE). 
 
 ## Prerequisites
 ### data sources
 The music used for this app originates from the Youtube app. The user has to have a updated version of the Youtube app on their phone. To establish the connection between the Youtube player and this app, the [Youtube API](https://www.youtube.com/yt/dev/api-resources/) is used.
 	
 ### external components
-For the communication between the different connected devices, [firebase](https://firebase.google.com/) is used. This is the place where the playlist, the users and the up- and downvotes are stored.
+For the communication between the different connected devices, [firebase](https://firebase.google.com/) is used. This is the place where the playlist, the users and the up- and downvotes are stored. The [Youtube API](https://www.youtube.com/yt/dev/api-resources/) is also used for providing the youtube player itself. The user is required to have an update version of the Youtube app installed.
 	
 ### review of similar apps
 There are many apps that use the following concept: have a group of friends and create a shared playlist. Spotify, for example, has such features. Each person can then play that playlist independently. But the market lacks an app that creates and plays a playlist simultaniously with multiple people, whereby the music is just played from one of the connected devices.
