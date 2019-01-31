@@ -2,7 +2,8 @@
 
 Author: Sjoerd Terpstra, 11251980  
 Course: Programmeerproject, minor Programmeren, UvA    
-Datum: 31-1-2019  
+Datum: 31-1-2019   
+[Product video](https://youtu.be/a-um6Nw5oYA)
   
 ### Short description
 This is a music app to create a realtime playlist of youtube videos accross multiple mobile devices, with the youtube video playing on the device of the group creator to provide music for a group of people.  
