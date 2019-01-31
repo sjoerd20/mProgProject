@@ -22,7 +22,7 @@ Working on prototype
 - Implemented the Toolbar in each Activity separate instead of using a BaseActivity
 
 # day 5
-Working of connecting Firebase to application
+Working on connecting Firebase to application
 
 ### Decisions
 - Decided to make a singleton of the FireBase class. This make it easier to use the class through multiple activities, while ensuring there is always maximal one instance of the FireBase class
@@ -44,11 +44,13 @@ Created packages in the java folder to keep the directory neat.
 ### Decisions
 
 # day 9
-Working on Youtube Search
+Working on Youtube Search. Problems with making connection with te API.
 
+# day 10
+Working on YoutubeSearch. 
 
 # day 11
-Working on Youtube Search
+Working on Youtube Search. Problems with making connection, the youtube.build kept returning null without sending a detailed error message.
 
 ### Decisions
 - Videos currently in the playlist are now displayed in a horizontal recyclerview instead of a listview
