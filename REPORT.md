@@ -13,6 +13,8 @@ _Screenshot of the home screen of the group creator_
 Product video: [Product video](https://youtu.be/a-um6Nw5oYA)
 
 # Application overview
+There are 4 different activities. The application starts with the login activity. This activity can then direct the user to GroupCreatorActivity or GroupMemberHomeActivty, depending if they started a new session in the login activity or logged in to a existing group.  
+
 _Overview of all screens_  
 <img src="/doc/Screenoverview.jpg" alt="drawing" height="800"/> 
 
@@ -37,7 +39,6 @@ _Overview of all screens_
 # Detailed overview
 
 ## Activities
-There are 4 different activities. The application starts with the login activity. This activity can then direct the user to GroupCreatorActivity or GroupMemberHomeActivty, depending if they started a new session in the login activity or logged in to a existing group.
 
 ### LoginActivity
 - User can enter login code to login. This code is checked with FireBase to check if the group exists. If that is the case, user joins the group and is directed to GroupMemberHomeActivity.
