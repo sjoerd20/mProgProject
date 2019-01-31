@@ -131,3 +131,10 @@ In first instance changed the display of videos in the search results and playli
 First the search function was located in a separate activity: SearchActivity. Decided to locate the search function in the Home activities. This made it easily possible to let the youtube video keep playing while searching for new videos. Finally decided to move the search function in a fragment, so the user can choose if he/she wants to see the current playlist or wants to search for a video.  
 
 The implementation for the search function was first done by using code provided by [Google Developers](https://developers.google.com/youtube/v3/docs/search/list#usage). However, this didn't work due to an unknown error. In the current implementation a volley request is used via a GET request with a url. This works exactly as needed.
+
+## Not implemented
+Due to time shortage, a few things haven't been implemented:
+- Up- and downvote songs in the playlist
+- Be able to kick a user as a group creator  
+
+It would alse have been nice to create a more beautiful UI with custom buttons and/or backgrounds to make the user feel more welcome.
