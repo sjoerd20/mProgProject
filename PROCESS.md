@@ -70,10 +70,22 @@ Hackathon
 
 # day 15
 
-# Decisions
+### Decisions
 - Created new model Playlist to hold the videos in the playlist
+
+# day 16
+Reordering code, cleaning redundant code
+
+### Decisions
+- Search and playlist in home screen using fragments
+
+# day 17
+Finalized Firebase operations
 
 # day 18 
 
 ### Decisions
 - Changed Recyclerview for search results to ListView
+
+# day 19
+Writing report, ordering repo
