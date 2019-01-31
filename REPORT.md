@@ -13,6 +13,8 @@ _Screenshot of the home screen of the group creator_
 Product video: [Product video](https://youtu.be/a-um6Nw5oYA)
 
 # Application overview
+_Overview of all screens_  
+<img src="/doc/Screenoverview.jpg" alt="drawing" height="800"/> 
 
 ## Login activity
 - Create a new session as a group creator
