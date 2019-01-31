@@ -88,4 +88,4 @@ Finalized Firebase operations
 - Changed Recyclerview for search results to ListView
 
 # day 19
-Writing report, ordering repo
+Writing report, ordering repo. Filmed product video and uploaded to youtube
