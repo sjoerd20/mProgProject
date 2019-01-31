@@ -1,5 +1,10 @@
 # Music4Party
 
+Author: Sjoerd Terpstra, 11251980  
+Course: Programmeerproject, minor Programmeren, UvA    
+Datum: 31-1-2019    
+[Product video](https://youtu.be/a-um6Nw5oYA)
+
 ## Problem Statement
 The music at parties is usually done by one person on a single device, because it is impossible to connect multiple 		   device to a single speaker. This means that a single person has to choose all songs or pass his/her telephone round the group. 
 This is something that happens a lot at parties of people from a young age (around 16) to people in their late twenties/early thirties.
