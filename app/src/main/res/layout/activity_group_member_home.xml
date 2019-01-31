@@ -18,7 +18,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="345dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
@@ -51,14 +51,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="10"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="177dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
+                android:layout_weight="1"
                 android:clickable="false"
                 android:orientation="vertical">
 
@@ -80,9 +80,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <FrameLayout
                     android:id="@+id/fragmentLayout"
@@ -94,26 +94,12 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <ListView
+            android:id="@+id/_listViewVideos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="50" />
     </LinearLayout>
-
-    <ListView
-        android:id="@+id/_listViewVideos"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
-
-    <!--<FrameLayout-->
-        <!--android:id="@+id/fragmentLayout"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_weight="1">-->
-
-    <!--</FrameLayout>-->
-
-    <!--<ListView-->
-        <!--android:id="@+id/_listViewVideos"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_weight="50" />-->
 
 </LinearLayout>

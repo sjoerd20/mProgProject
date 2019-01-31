@@ -13,6 +13,7 @@ import android.util.Log;
 
 import com.example.sjoerd.music4party.FireBase;
 import com.example.sjoerd.music4party.R;
+import com.example.sjoerd.music4party.activities.GroupCreatorHomeActivity;
 import com.example.sjoerd.music4party.models.Playlist;
 import com.example.sjoerd.music4party.models.Video;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -29,6 +30,7 @@ public class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListene
 
     private static final String API_KEY = "AIzaSyB91qfzy3kS3ZjtK4YoJ7Wa78afJyY7OHQ ";
 
+    private Activity activity;
     private YouTubePlayer youTubePlayer;
 
     private Playlist retrievedPlaylist;
@@ -39,6 +41,7 @@ public class YoutubePlayerFragment implements YouTubePlayer.OnInitializedListene
      */
     public YoutubePlayerFragment(Activity activity, FragmentManager supportFragmentManager,
                                  Playlist playlist, FireBase fireBase) {
+        this.activity = activity;
         this.retrievedPlaylist = playlist;
         this.retrievedFireBase = fireBase;
 

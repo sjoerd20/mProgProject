@@ -215,6 +215,7 @@ public class GroupCreatorHomeActivity extends AppCompatActivity implements Youtu
             // Update playlist
             retrievedPlaylist.addVideo(clickedVideo);
             retrievedFireBase.changePlaylist(retrievedPlaylist);
+            retrievedPlaylist.getPlaylist();
         }
     }
 }
