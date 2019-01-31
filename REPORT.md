@@ -137,4 +137,4 @@ Due to time shortage, a few things haven't been implemented:
 - Up- and downvote songs in the playlist
 - Be able to kick a user as a group creator  
 
-It would alse have been nice to create a more beautiful UI with custom buttons and/or backgrounds to make the user feel more welcome.
+It would also have been nice to create a more beautiful UI with custom buttons and/or backgrounds to make the user feel more welcome.
