@@ -33,6 +33,9 @@ The solution is to make an app that contains a playlist shared with multiple peo
 	<em>Settings screen</em>
 </p>
 
+### Product video
+[Product video](https://youtu.be/a-um6Nw5oYA)
+
 ## Copyright
 For the license see [License](LICENSE). 
 
