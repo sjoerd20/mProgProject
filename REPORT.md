@@ -97,9 +97,12 @@ There are 4 different activities. The application starts with the login activity
 - Checks login code for users who are login in
 - Singleton
 - Instantiates Group and Playlist object
+- Write and read from database  
 
+Each group has a database entry under "g" with their logincode and a database entry under "p" to store their playlist.
 
 ### VideoAdapter
+- This adapter is used to display videos properly in a listview. It uses an arraylist of videos
 
 ### YoutubeSearchRequest
-
+- Sends a volleyrequest to the Youtube Data API to search videos using a search query provided by the user. This class interacts with GroupCreatorHomeActivity and GroupMemberHomeActivity who both have a search functionality implemented
