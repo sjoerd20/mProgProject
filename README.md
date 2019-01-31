@@ -1,4 +1,4 @@
-# mProgProject
+# Music4Party
 
 ## Problem Statement
 The music at parties is usually done by one person on a single device, because it is impossible to connect multiple 		   device to a single speaker. This means that a single person has to choose all songs or pass his/her telephone round the group. 
@@ -8,34 +8,23 @@ This is something that happens a lot at parties of people from a young age (arou
 The solution is to make an app that contains a playlist shared with multiple people whereby one device is the master device that plays the music from the playlist via a music API.
 
 ### Main features
-(features that are part of the minimum viable product (MVP) are marked __bold__)
 - Login screen
-	- __Create a new group and login code__
-	- __Join a existing group through a login code__
+	- Create a new group and login code
+	- Join a existing group through a login code
 - Home screen
-	- __Play and pause the current song__
-	- __View the next songs in the queue__
-	- Down- and upvote songs
-- Search screen
-	- __Search for new numbers and add them to the queue__
-- Settings screen
-	- __View group login code__
-	- __Terminate current group (only available for group creator)__
-	- Change minimum number of downvotes needed before a song is removed from the queue
-	- View all current users and be able to kick them (only available for group creator)
+	- Play and pause the current song
+	- View the next songs in the playlist
+	- Search for new numbers and add them to the queue
+	- Settings screen
+	- View group login code
+	- Terminate current session
 
 ### Login screen
 ![Login screen](/doc/Login_screen.jpg)
 
-### Home screen
-![Home screen](/doc/Group_leader_screen.jpg)
+## License
+For the license see [License](LICENSE)
 
-### Search screen
-![Search screen](/doc/Search_screen.jpg)
-
-### Settings screen
-![Settings screen](/doc/Settings_screen.jpg)
-	
 ## Prerequisites
 ### data sources
 The music used for this app originates from the Youtube app. The user has to have a updated version of the Youtube app on their phone. To establish the connection between the Youtube player and this app, the [Youtube API](https://www.youtube.com/yt/dev/api-resources/) is used.
