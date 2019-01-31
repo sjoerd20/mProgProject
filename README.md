@@ -15,17 +15,22 @@ The solution is to make an app that contains a playlist shared with multiple peo
 	- Play and pause the current song
 	- View the next songs in the playlist
 	- Search for new numbers and add them to the queue
-	- Settings screen
+- Settings screen
 	- View group login code
 	- Terminate current session
 
 ### Screenshots
 <p float="center">
-<img title="Login screen" src="/doc/Login.jpg" alt="drawing" height="300"/>
-<img title="Home screen group creator" src="/doc/CreatorHome.jpg" alt="drawing" height="300"/>
-<img title="Home screen playlist" src="/doc/CreatorPlaylist.JPG" alt="drawing" height="300"/>
-<img title="Home screen group member" src="/doc/HomeMember.JPG" alt="drawing" height="300"/>
-<img title="Settings screen" src="/doc/Settings.JPG" alt="drawing" height="300"/>
+	<img title="Login screen" src="/doc/Login.jpg" alt="drawing" height="300"/>
+	<em>Login screen</em>
+	<img title="Home screen group creator" src="/doc/CreatorHome.jpg" alt="drawing" height="300"/>
+	<em>Home screen group creator</em>
+	<img title="Home screen playlist" src="/doc/CreatorPlaylist.JPG" alt="drawing" height="300"/>
+	<em>Home screen playlist</em>
+	<img title="Home screen group member" src="/doc/HomeMember.JPG" alt="drawing" height="300"/>
+	<em>Home screen group member</em>
+	<img title="Settings screen" src="/doc/Settings.JPG" alt="drawing" height="300"/>
+	<em>Settings screen</em>
 </p>
 
 ## Copyright
