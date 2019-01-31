@@ -40,7 +40,7 @@ The solution is to make an app that contains a playlist shared with multiple peo
 For the license see [License](LICENSE). 
 
 ## Additional info
-Due to safety, the API key present in the versions on Github is no longer active. To fully use the app, an API key for the Youtube Data API has to be generated via ![Google Console](https://console.cloud.google.com/apis/dashboard).
+Due to safety, the API key present in the versions on Github is no longer active. To fully use the app, an API key for the Youtube Data API has to be generated via [Google Console](https://console.cloud.google.com/apis/dashboard).
 
 ## Prerequisites
 ### data sources
