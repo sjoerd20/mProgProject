@@ -21,11 +21,11 @@ The solution is to make an app that contains a playlist shared with multiple peo
 
 ### Screenshots
 <p float="center">
-<img src="/doc/Login.jpg" alt="drawing" height="300"/>
-<img src="/doc/CreatorHome.jpg" alt="drawing" height="300"/>
-<img src="/doc/CreatorPlaylist.JPG" alt="drawing" height="300"/>
-<img src="/doc/HomeMember.JPG" alt="drawing" height="300"/>
-<img src="/doc/Settings.JPG" alt="drawing" height="300"/>
+<img title="Login screen" src="/doc/Login.jpg" alt="drawing" height="300"/>
+<img title="Home screen group creator" src="/doc/CreatorHome.jpg" alt="drawing" height="300"/>
+<img title="Home screen playlist" src="/doc/CreatorPlaylist.JPG" alt="drawing" height="300"/>
+<img title="Home screen group member" src="/doc/HomeMember.JPG" alt="drawing" height="300"/>
+<img title="Settings screen" src="/doc/Settings.JPG" alt="drawing" height="300"/>
 </p>
 
 ## Copyright
