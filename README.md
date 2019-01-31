@@ -20,11 +20,13 @@ The solution is to make an app that contains a playlist shared with multiple peo
 	- Terminate current session
 
 ### Screenshots
+<p float="center">
 <img src="/doc/Login.jpg" alt="drawing" height="300"/>
 <img src="/doc/CreatorHome.jpg" alt="drawing" height="300"/>
-<img src="/doc/CreatorPlaylist.jpg" alt="drawing" height="300"/>
-<img src="/doc/MemberHome.jpg" alt="drawing" height="300"/>
-<img src="/doc/Settings.jpg" alt="drawing" height="300"/>
+<img src="/doc/CreatorPlaylist.JPG" alt="drawing" height="300"/>
+<img src="/doc/MemberHome.JPG" alt="drawing" height="300"/>
+<img src="/doc/Settings.JPG" alt="drawing" height="300"/>
+</p>
 
 ## License
 For the license see [License](LICENSE)
