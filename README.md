@@ -19,8 +19,12 @@ The solution is to make an app that contains a playlist shared with multiple peo
 	- View group login code
 	- Terminate current session
 
-### Login activity
-<img src="/doc/Login.jpg" alt="drawing" height="250"/>
+### Screenshots
+<img src="/doc/Login.jpg" alt="drawing" height="300"/>
+<img src="/doc/CreatorHome.jpg" alt="drawing" height="300"/>
+<img src="/doc/CreatorPlaylist.jpg" alt="drawing" height="300"/>
+<img src="/doc/MemberHome.jpg" alt="drawing" height="300"/>
+<img src="/doc/Settings.jpg" alt="drawing" height="300"/>
 
 ## License
 For the license see [License](LICENSE)
