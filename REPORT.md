@@ -31,3 +31,40 @@ Product video: [Product video](https://youtu.be/a-um6Nw5oYA)
 ## Settings activity
 - View login code
 - Exit current session
+
+# Detailed overview
+
+## Activities
+
+### LoginActivity.java
+
+### GroupCreatorHomeActivity.java
+
+### GroupMemberHomeActivty.java
+
+### SettingsActivity.java
+
+## Fragments
+
+### PlaylistFragment
+
+### SearchFragment
+
+### YoutubePlayerFragment
+
+## Models
+
+### Group
+
+### Playlist
+
+### Video
+
+## Additional
+
+### FireBase
+
+### VideoAdapter
+
+### YoutubeSearchRequest
+
